@@ -340,6 +340,82 @@
         padding: 0;
       }
 
+      .featured-case {
+        display: grid;
+        grid-template-columns: minmax(0, 0.9fr) minmax(320px, 1.1fr);
+        gap: clamp(24px, 5vw, 56px);
+        align-items: center;
+        padding: clamp(24px, 4vw, 42px);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--surface);
+        box-shadow: var(--shadow);
+      }
+
+      .featured-case h3 {
+        margin-bottom: 14px;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: clamp(1.85rem, 3vw, 3.1rem);
+        line-height: 1.04;
+      }
+
+      .case-meta {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin: 18px 0 22px;
+      }
+
+      .case-meta span {
+        padding: 7px 10px;
+        border-radius: 999px;
+        background: rgba(83, 117, 104, 0.12);
+        color: var(--sage);
+        font-size: 0.82rem;
+        font-weight: 800;
+      }
+
+      .case-points {
+        display: grid;
+        gap: 12px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .case-points li {
+        display: grid;
+        grid-template-columns: 28px 1fr;
+        gap: 10px;
+        color: var(--muted);
+      }
+
+      .case-points li::before {
+        content: "";
+        width: 10px;
+        height: 10px;
+        margin-top: 8px;
+        border-radius: 50%;
+        background: var(--terra);
+      }
+
+      .case-image {
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #f4f0e6;
+      }
+
+      .case-image img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+
+      .case-spacer {
+        height: 16px;
+      }
+
       .case-visual {
         display: grid;
         min-height: 176px;
@@ -456,7 +532,8 @@
         .hero,
         .section-head,
         .contact,
-        .quote-grid {
+        .quote-grid,
+        .featured-case {
           grid-template-columns: 1fr;
         }
 
@@ -652,10 +729,56 @@
           <div class="section-head">
             <h2>Selected Work</h2>
             <p>
-              Project areas from my LinkedIn PDF, shaped into portfolio case study
-              previews that can be expanded with visuals, outcomes, and process detail.
+              A featured research project plus current product areas from my profile,
+              shaped into portfolio case study previews.
             </p>
           </div>
+          <article class="featured-case">
+            <div>
+              <p class="eyebrow">Graduation Project / Samsung SRI-Delhi</p>
+              <h3>Use of Generative AI for enhancing Customer Satisfaction</h3>
+              <p class="lede">
+                A research-led UX project exploring how GenAI can reduce agent effort,
+                connect fragmented service channels, and improve customer satisfaction
+                across Samsung support workflows.
+              </p>
+              <div class="case-meta">
+                <span>Primary research</span>
+                <span>Call centre study</span>
+                <span>Journey mapping</span>
+                <span>Enterprise UX</span>
+              </div>
+              <ul class="case-points">
+                <li>
+                  Studied 15+ users, observed 25-30 support calls, and mapped agent and
+                  customer pain points across call, WhatsApp, email, chatbot, website,
+                  and service-centre channels.
+                </li>
+                <li>
+                  Identified blockers including language handoffs, excessive manual
+                  typing, fragmented apps, repeated channel starts, duplicate profiles,
+                  and slow after-call work.
+                </li>
+                <li>
+                  Proposed COSS, a one-stop agent workspace using speech-to-text,
+                  auto-summary, auto-fill, consolidated history, solution prompts, and
+                  progressive disclosure.
+                </li>
+                <li>
+                  Projected a shift from 4-9 active apps to 1-2, reduced call handling
+                  time from 8-10 minutes to under 4 minutes, and improved agent
+                  efficiency by roughly 33%.
+                </li>
+              </ul>
+            </div>
+            <figure class="case-image">
+              <img
+                src="assets/generative-ai-coss-case.png"
+                alt="COSS customer support dashboard concept showing profile, tickets, recommendations, history, prompt input, and workspace panels."
+              />
+            </figure>
+          </article>
+          <div class="case-spacer"></div>
           <div class="work-grid">
             <article class="card case-card">
               <div class="case-visual" aria-hidden="true">
