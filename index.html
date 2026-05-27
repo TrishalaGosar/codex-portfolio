@@ -1,0 +1,801 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Portfolio of Trishala Gosar, a UX designer focused on transforming user inputs into meaningful product experiences."
+    />
+    <title>Trishala Gosar | UX Designer</title>
+    <style>
+      :root {
+        --ink: #181713;
+        --muted: #6f6b61;
+        --paper: #fbfaf6;
+        --surface: #ffffff;
+        --line: #ded9cc;
+        --sage: #537568;
+        --terra: #b35c3e;
+        --gold: #d7a948;
+        --sky: #7ca7b8;
+        --shadow: 0 18px 44px rgba(24, 23, 19, 0.12);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at 15% 12%, rgba(215, 169, 72, 0.18), transparent 26rem),
+          radial-gradient(circle at 88% 6%, rgba(124, 167, 184, 0.2), transparent 28rem),
+          var(--paper);
+        font-family:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+        line-height: 1.55;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .page {
+        min-height: 100vh;
+      }
+
+      .wrap {
+        width: min(1120px, calc(100% - 40px));
+        margin: 0 auto;
+      }
+
+      .nav {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        border-bottom: 1px solid rgba(222, 217, 204, 0.76);
+        background: rgba(251, 250, 246, 0.86);
+        backdrop-filter: blur(16px);
+      }
+
+      .nav-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        min-height: 72px;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 800;
+        letter-spacing: 0;
+        text-decoration: none;
+      }
+
+      .brand-mark {
+        display: grid;
+        width: 38px;
+        height: 38px;
+        place-items: center;
+        border: 1px solid var(--ink);
+        border-radius: 8px;
+        background: var(--ink);
+        color: var(--paper);
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+
+      .nav-links a {
+        padding: 8px 10px;
+        border-radius: 8px;
+        color: var(--muted);
+        font-size: 0.94rem;
+        font-weight: 650;
+        text-decoration: none;
+      }
+
+      .nav-links a:hover {
+        color: var(--ink);
+        background: rgba(83, 117, 104, 0.11);
+      }
+
+      .hero {
+        display: grid;
+        grid-template-columns: minmax(0, 1.05fr) minmax(300px, 0.95fr);
+        gap: clamp(28px, 6vw, 76px);
+        align-items: center;
+        min-height: calc(100vh - 72px);
+        padding: 56px 0 48px;
+      }
+
+      .eyebrow {
+        margin: 0 0 16px;
+        color: var(--terra);
+        font-size: 0.8rem;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin-top: 0;
+      }
+
+      h1 {
+        max-width: 780px;
+        margin-bottom: 20px;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: clamp(3.4rem, 8vw, 7.4rem);
+        line-height: 0.94;
+        letter-spacing: 0;
+      }
+
+      .hero-copy {
+        max-width: 650px;
+        color: #403d36;
+        font-size: clamp(1.08rem, 2vw, 1.35rem);
+      }
+
+      .hero-actions {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-top: 32px;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 46px;
+        padding: 0 18px;
+        border: 1px solid var(--ink);
+        border-radius: 8px;
+        background: var(--ink);
+        color: var(--paper);
+        font-weight: 800;
+        text-decoration: none;
+      }
+
+      .button.secondary {
+        background: transparent;
+        color: var(--ink);
+      }
+
+      .hero-panel {
+        position: relative;
+        min-height: 560px;
+      }
+
+      .experience-board {
+        position: absolute;
+        inset: 12px 0 auto auto;
+        width: min(460px, 100%);
+        padding: 22px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.9);
+        box-shadow: var(--shadow);
+      }
+
+      .portrait {
+        display: grid;
+        place-items: center;
+        min-height: 250px;
+        margin-bottom: 18px;
+        border-radius: 8px;
+        background:
+          linear-gradient(135deg, rgba(83, 117, 104, 0.94), rgba(124, 167, 184, 0.86)),
+          repeating-linear-gradient(90deg, transparent 0 28px, rgba(255, 255, 255, 0.18) 28px 29px);
+        color: #fff;
+      }
+
+      .portrait span {
+        display: grid;
+        width: min(54%, 220px);
+        aspect-ratio: 1;
+        place-items: center;
+        border: 2px solid rgba(255, 255, 255, 0.72);
+        border-radius: 50%;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: clamp(4.5rem, 10vw, 7rem);
+      }
+
+      .board-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .metric {
+        min-height: 104px;
+        padding: 14px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #fbfaf6;
+      }
+
+      .metric strong {
+        display: block;
+        margin-bottom: 5px;
+        font-size: 1.42rem;
+        line-height: 1;
+      }
+
+      .metric span {
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      .floating-note {
+        position: absolute;
+        right: 28px;
+        bottom: 12px;
+        width: min(330px, 82%);
+        padding: 18px;
+        border: 1px solid rgba(24, 23, 19, 0.18);
+        border-radius: 8px;
+        background: #f4dfb0;
+        box-shadow: 0 14px 30px rgba(24, 23, 19, 0.14);
+        transform: rotate(-2deg);
+      }
+
+      .floating-note p {
+        margin-bottom: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 1.18rem;
+        line-height: 1.28;
+      }
+
+      section {
+        padding: 88px 0;
+      }
+
+      .section-head {
+        display: grid;
+        grid-template-columns: minmax(190px, 0.36fr) minmax(0, 0.64fr);
+        gap: 28px;
+        align-items: end;
+        margin-bottom: 34px;
+      }
+
+      h2 {
+        margin-bottom: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: clamp(2rem, 4vw, 3.5rem);
+        line-height: 1;
+      }
+
+      .section-head p,
+      .lede {
+        color: var(--muted);
+        font-size: 1.04rem;
+      }
+
+      .about-grid,
+      .work-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .card {
+        min-height: 220px;
+        padding: 22px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--surface);
+        box-shadow: 0 8px 24px rgba(24, 23, 19, 0.05);
+      }
+
+      .card h3 {
+        margin-bottom: 10px;
+        font-size: 1.05rem;
+      }
+
+      .card p {
+        color: var(--muted);
+      }
+
+      .tag-row {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-top: 18px;
+      }
+
+      .tag {
+        padding: 6px 9px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        color: #47433b;
+        background: #fbfaf6;
+        font-size: 0.82rem;
+        font-weight: 700;
+      }
+
+      .case-card {
+        position: relative;
+        overflow: hidden;
+        min-height: 360px;
+        padding: 0;
+      }
+
+      .case-visual {
+        display: grid;
+        min-height: 176px;
+        padding: 18px;
+        background: #f4f0e6;
+        gap: 10px;
+      }
+
+      .screen {
+        display: grid;
+        gap: 9px;
+        padding: 16px;
+        border: 1px solid rgba(24, 23, 19, 0.15);
+        border-radius: 8px;
+        background: #fff;
+      }
+
+      .bar,
+      .line {
+        height: 10px;
+        border-radius: 999px;
+        background: var(--line);
+      }
+
+      .bar {
+        width: 38%;
+        background: var(--sage);
+      }
+
+      .line:nth-child(2) {
+        width: 82%;
+      }
+
+      .line:nth-child(3) {
+        width: 64%;
+      }
+
+      .mini-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+      }
+
+      .tile {
+        aspect-ratio: 1;
+        border-radius: 8px;
+        background: rgba(124, 167, 184, 0.42);
+      }
+
+      .case-body {
+        padding: 22px;
+      }
+
+      .timeline {
+        display: grid;
+        border-top: 1px solid var(--line);
+      }
+
+      .timeline-item {
+        display: grid;
+        grid-template-columns: minmax(160px, 0.25fr) minmax(0, 0.75fr);
+        gap: 24px;
+        padding: 24px 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .timeline-item time,
+      .timeline-item .place {
+        color: var(--muted);
+        font-weight: 700;
+      }
+
+      .quote-band {
+        background: var(--ink);
+        color: var(--paper);
+      }
+
+      .quote-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 0.85fr) minmax(220px, 0.15fr);
+        gap: 36px;
+        align-items: center;
+      }
+
+      blockquote {
+        margin: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: clamp(1.75rem, 4vw, 3.35rem);
+        line-height: 1.12;
+      }
+
+      .quote-grid p {
+        color: #d7d1c3;
+      }
+
+      .contact {
+        display: grid;
+        grid-template-columns: minmax(0, 0.75fr) minmax(220px, 0.25fr);
+        gap: 28px;
+        align-items: center;
+      }
+
+      .contact h2 {
+        margin-bottom: 16px;
+      }
+
+      footer {
+        padding: 28px 0 40px;
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      @media (max-width: 860px) {
+        .hero,
+        .section-head,
+        .contact,
+        .quote-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .hero {
+          min-height: auto;
+          padding-top: 44px;
+        }
+
+        .hero-panel {
+          min-height: 600px;
+        }
+
+        .experience-board {
+          left: 0;
+          right: auto;
+        }
+
+        .about-grid,
+        .work-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .timeline-item {
+          grid-template-columns: 1fr;
+          gap: 8px;
+        }
+      }
+
+      @media (max-width: 620px) {
+        .wrap {
+          width: min(100% - 28px, 1120px);
+        }
+
+        .nav-inner {
+          align-items: flex-start;
+          flex-direction: column;
+          gap: 12px;
+          padding: 14px 0;
+        }
+
+        .nav-links {
+          justify-content: flex-start;
+        }
+
+        .nav-links a {
+          padding-left: 0;
+        }
+
+        h1 {
+          font-size: clamp(3rem, 16vw, 4.35rem);
+        }
+
+        .hero-panel {
+          min-height: auto;
+        }
+
+        .experience-board,
+        .floating-note {
+          position: static;
+          width: 100%;
+          transform: none;
+        }
+
+        .floating-note {
+          margin-top: 16px;
+        }
+
+        .board-grid {
+          grid-template-columns: 1fr;
+        }
+
+        section {
+          padding: 64px 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <nav class="nav" aria-label="Primary navigation">
+        <div class="wrap nav-inner">
+          <a class="brand" href="#top" aria-label="Trishala Gosar home">
+            <span class="brand-mark">TG</span>
+            <span>Trishala Gosar</span>
+          </a>
+          <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#work">Work</a>
+            <a href="#experience">Experience</a>
+            <a href="#contact">Contact</a>
+          </div>
+        </div>
+      </nav>
+
+      <main id="top">
+        <header class="wrap hero">
+          <div>
+            <p class="eyebrow">UX Designer / Samsung R&amp;D Institute India - Delhi</p>
+            <h1>Designing clarity from many voices.</h1>
+            <p class="hero-copy">
+              I am Trishala, a UX designer with around 2 years of experience. My core
+              ability is to funnel varied user inputs into beautiful, meaningful, and
+              scalable product experiences.
+            </p>
+            <div class="hero-actions">
+              <a class="button" href="#work">View selected work</a>
+              <a class="button secondary" href="#contact">Start a conversation</a>
+            </div>
+          </div>
+
+          <div class="hero-panel" aria-label="Profile summary">
+            <div class="experience-board">
+              <div class="portrait" aria-hidden="true">
+                <span>T</span>
+              </div>
+              <div class="board-grid">
+                <div class="metric">
+                  <strong>~2 yrs</strong>
+                  <span>UX design experience</span>
+                </div>
+                <div class="metric">
+                  <strong>2K</strong>
+                  <span>public profile followers</span>
+                </div>
+                <div class="metric">
+                  <strong>NID</strong>
+                  <span>design education, 2021-2023</span>
+                </div>
+                <div class="metric">
+                  <strong>5</strong>
+                  <span>working languages listed</span>
+                </div>
+              </div>
+            </div>
+            <div class="floating-note">
+              <p>Inputs become patterns. Patterns become product decisions.</p>
+            </div>
+          </div>
+        </header>
+
+        <section id="about" class="wrap">
+          <div class="section-head">
+            <h2>Profile</h2>
+            <p>
+              Public profile details point to a designer who works with complex,
+              scalable systems while keeping user understanding at the center of the
+              process.
+            </p>
+          </div>
+          <div class="about-grid">
+            <article class="card">
+              <h3>Research synthesis</h3>
+              <p>
+                I gather signals from users, stakeholders, product constraints, and
+                usage contexts, then turn them into a clear design direction.
+              </p>
+              <div class="tag-row">
+                <span class="tag">User inputs</span>
+                <span class="tag">Sensemaking</span>
+                <span class="tag">Prioritization</span>
+              </div>
+            </article>
+            <article class="card">
+              <h3>Experience design</h3>
+              <p>
+                My focus is on journeys that are useful, calm, and visually resolved,
+                especially where the product surface needs to scale.
+              </p>
+              <div class="tag-row">
+                <span class="tag">UX design</span>
+                <span class="tag">Interaction</span>
+                <span class="tag">Systems</span>
+              </div>
+            </article>
+            <article class="card">
+              <h3>Communication</h3>
+              <p>
+                Recommendations highlight sincerity, dedication, confidence in design
+                details, and growth in UX writing.
+              </p>
+              <div class="tag-row">
+                <span class="tag">UX writing</span>
+                <span class="tag">Design rationale</span>
+                <span class="tag">Collaboration</span>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section id="work" class="wrap">
+          <div class="section-head">
+            <h2>Selected Work</h2>
+            <p>
+              A portfolio-ready structure based on public profile information. These
+              case studies can be expanded with project visuals, outcomes, and process
+              detail.
+            </p>
+          </div>
+          <div class="work-grid">
+            <article class="card case-card">
+              <div class="case-visual" aria-hidden="true">
+                <div class="screen">
+                  <div class="bar"></div>
+                  <div class="line"></div>
+                  <div class="line"></div>
+                  <div class="mini-grid">
+                    <div class="tile"></div>
+                    <div class="tile"></div>
+                    <div class="tile"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="case-body">
+                <h3>Scalable UX at Samsung</h3>
+                <p>
+                  Designing for complex product contexts at Samsung R&amp;D Institute
+                  India - Delhi, with attention to clarity, structure, and user value.
+                </p>
+              </div>
+            </article>
+            <article class="card case-card">
+              <div class="case-visual" aria-hidden="true">
+                <div class="screen">
+                  <div class="bar" style="background: var(--terra)"></div>
+                  <div class="line"></div>
+                  <div class="mini-grid">
+                    <div class="tile" style="background: rgba(179, 92, 62, 0.38)"></div>
+                    <div class="tile" style="background: rgba(215, 169, 72, 0.46)"></div>
+                    <div class="tile" style="background: rgba(83, 117, 104, 0.36)"></div>
+                  </div>
+                  <div class="line"></div>
+                </div>
+              </div>
+              <div class="case-body">
+                <h3>S-Intera / Samsung E.D.G.E.</h3>
+                <p>
+                  Runner-up concept for Samsung E.D.G.E. Season 7: an FMV-based,
+                  gamified interaction idea for modern direct communication.
+                </p>
+              </div>
+            </article>
+            <article class="card case-card">
+              <div class="case-visual" aria-hidden="true">
+                <div class="screen">
+                  <div class="bar" style="background: var(--sky)"></div>
+                  <div class="line"></div>
+                  <div class="line"></div>
+                  <div class="line" style="width: 48%"></div>
+                </div>
+              </div>
+              <div class="case-body">
+                <h3>UX writing and design detail</h3>
+                <p>
+                  Mentor feedback notes significant growth in UX writing and a
+                  professional approach to assignments, details, and timelines.
+                </p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section id="experience" class="wrap">
+          <div class="section-head">
+            <h2>Experience</h2>
+            <p>
+              Public profile data, organized into a concise portfolio timeline.
+            </p>
+          </div>
+          <div class="timeline">
+            <article class="timeline-item">
+              <div>
+                <div class="place">Samsung R&amp;D Institute India - Delhi</div>
+                <time>Noida, Uttar Pradesh, India</time>
+              </div>
+              <div>
+                <h3>UX Designer</h3>
+                <p class="lede">
+                  Designing complex, scalable product experiences and translating user
+                  needs into practical product decisions.
+                </p>
+              </div>
+            </article>
+            <article class="timeline-item">
+              <div>
+                <div class="place">National Institute of Design</div>
+                <time>2021 - 2023</time>
+              </div>
+              <div>
+                <h3>Design education</h3>
+                <p class="lede">
+                  Formal design training that supports research-led thinking,
+                  prototyping, critique, and product storytelling.
+                </p>
+              </div>
+            </article>
+            <article class="timeline-item">
+              <div>
+                <div class="place">Samsung E.D.G.E. Season 7</div>
+                <time>Nov 2022</time>
+              </div>
+              <div>
+                <h3>Runner-up</h3>
+                <p class="lede">
+                  Team Srujan created S-Intera, a gamified FMV-based interaction concept
+                  for modern ways of direct communication with consumers.
+                </p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="quote-band">
+          <div class="wrap quote-grid">
+            <blockquote>
+              "She brings energy, creativity, and conviction with design details."
+            </blockquote>
+            <p>
+              Recommendation themes from public profile snippets mention dedication,
+              sincerity, UX writing growth, and confidence in communication.
+            </p>
+          </div>
+        </section>
+
+        <section id="contact" class="wrap contact">
+          <div>
+            <p class="eyebrow">Available for UX design conversations</p>
+            <h2>Let's shape complex inputs into a clearer product experience.</h2>
+            <p class="lede">
+              Add your preferred email or contact route here when you are ready to make
+              the portfolio public.
+            </p>
+          </div>
+          <a class="button" href="mailto:hello@example.com">Email Trishala</a>
+        </section>
+      </main>
+
+      <footer class="wrap">
+        <span>Copyright 2026 Trishala Gosar. Built as a responsive static portfolio.</span>
+      </footer>
+    </div>
+  </body>
+</html>
