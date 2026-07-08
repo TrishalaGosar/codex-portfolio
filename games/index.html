@@ -8,6 +8,7 @@
       content="Game design projects by Trishala Gosar, including PC, VR, puzzle, strategy, mechanics, and character design work."
     />
     <title>Games | Trishala Gosar</title>
+    <link rel="icon" type="image/png" href="../Logo%20642x634.png" />
     <style>
       :root {
         --ink: #181713;
@@ -19,6 +20,8 @@
         --terra: #b35c3e;
         --gold: #d7a948;
         --sky: #7ca7b8;
+        --aqua-rgb: 70, 199, 195;
+        --orchid-rgb: 198, 118, 180;
         --shadow: 0 18px 44px rgba(24, 23, 19, 0.12);
       }
 
@@ -33,10 +36,12 @@
       body {
         margin: 0;
         color: var(--ink);
-        background:
-          radial-gradient(circle at 12% 6%, rgba(215, 169, 72, 0.2), transparent 28rem),
-          radial-gradient(circle at 92% 2%, rgba(124, 167, 184, 0.22), transparent 30rem),
-          var(--paper);
+        background-color: #ffffff;
+        background-image:
+          radial-gradient(circle at 12% 6%, rgba(215, 169, 72, 0.12), transparent 28rem),
+          radial-gradient(circle at 92% 2%, rgba(var(--orchid-rgb), 0.14), transparent 30rem),
+          radial-gradient(#e5e7eb 1px, transparent 1px);
+        background-size: auto, auto, 16px 16px;
         font-family:
           Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
           sans-serif;
@@ -66,25 +71,33 @@
         align-items: center;
         justify-content: space-between;
         gap: 24px;
-        min-height: 72px;
+        min-height: 80px;
       }
 
       .brand {
         display: inline-flex;
         align-items: center;
-        gap: 10px;
+        gap: 12px;
         font-weight: 800;
         text-decoration: none;
       }
 
+      .brand span {
+        line-height: 1;
+      }
+
       .brand-mark {
         display: grid;
-        width: 38px;
-        height: 38px;
+        width: 52px;
+        height: 52px;
         place-items: center;
-        border-radius: 8px;
-        background: var(--ink);
-        color: var(--paper);
+      }
+
+      .brand-mark img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
       }
 
       .nav-links {
@@ -95,7 +108,7 @@
       }
 
       .nav-links a {
-        padding: 8px 10px;
+        padding: 10px 10px;
         border-radius: 8px;
         color: var(--muted);
         font-size: 0.94rem;
@@ -105,15 +118,19 @@
 
       .nav-links a:hover {
         color: var(--ink);
-        background: rgba(83, 117, 104, 0.11);
+        background: linear-gradient(
+          135deg,
+          rgba(var(--aqua-rgb), 0.12),
+          rgba(var(--orchid-rgb), 0.1)
+        );
       }
 
       .hero {
         display: grid;
-        grid-template-columns: minmax(0, 0.86fr) minmax(280px, 0.48fr);
-        gap: clamp(28px, 6vw, 72px);
-        align-items: end;
-        padding: 76px 0 48px;
+        grid-template-columns: minmax(280px, 0.64fr) minmax(0, 1.36fr);
+        gap: clamp(20px, 4vw, 34px);
+        align-items: start;
+        padding: 28px 0 26px;
       }
 
       .eyebrow {
@@ -139,10 +156,10 @@
       }
 
       h1 {
-        max-width: 860px;
-        margin-bottom: 22px;
-        font-size: clamp(3.25rem, 8vw, 7rem);
-        line-height: 0.94;
+        max-width: 520px;
+        margin-bottom: 14px;
+        font-size: clamp(1.85rem, 3.6vw, 2.65rem);
+        line-height: 1.02;
       }
 
       h2 {
@@ -153,10 +170,13 @@
 
       .lede {
         color: #403d36;
-        font-size: clamp(1.08rem, 2vw, 1.28rem);
+        font-size: clamp(1rem, 1.45vw, 1.08rem);
       }
 
       .summary-card {
+        display: grid;
+        gap: 14px;
+        align-content: start;
         padding: 22px;
         border: 1px solid var(--line);
         border-radius: 8px;
@@ -176,8 +196,49 @@
         color: var(--muted);
       }
 
+      .play-card {
+        display: grid;
+        gap: 10px;
+        align-content: start;
+        padding: 18px 20px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.9);
+        box-shadow: var(--shadow);
+      }
+
+      .play-stage-shell {
+        display: grid;
+        place-items: center;
+        padding: 0;
+      }
+
+      .play-stage {
+        display: grid;
+        place-items: center;
+        min-height: clamp(320px, 36vw, 440px);
+        background: transparent;
+      }
+
+      .play-stage-art {
+        display: grid;
+        place-items: center;
+        padding: 0;
+      }
+
+      .play-stage-art img {
+        display: block;
+        width: min(78%, 380px);
+        aspect-ratio: 1;
+        height: auto;
+        border: 3px solid rgba(255, 255, 255, 0.82);
+        border-radius: 50%;
+        object-fit: cover;
+        box-shadow: 0 18px 38px rgba(24, 23, 19, 0.18);
+      }
+
       section {
-        padding: 54px 0 92px;
+        padding: 42px 0 92px;
       }
 
       .games-grid {
@@ -279,6 +340,10 @@
         .games-grid {
           grid-template-columns: 1fr;
         }
+
+        .play-stage {
+          min-height: clamp(280px, 52vw, 360px);
+        }
       }
 
       @media (max-width: 620px) {
@@ -304,6 +369,14 @@
         h1 {
           font-size: clamp(3rem, 16vw, 4.4rem);
         }
+
+        .play-stage-shell {
+          padding: 10px;
+        }
+
+        .play-stage {
+          min-height: 54vh;
+        }
       }
     </style>
   </head>
@@ -311,12 +384,15 @@
     <nav class="nav" aria-label="Primary navigation">
       <div class="wrap nav-inner">
         <a class="brand" href="../index.html" aria-label="Back to Trishala Gosar portfolio">
-          <span class="brand-mark">TG</span>
+          <span class="brand-mark">
+            <img src="../Logo%20642x634.png" alt="" aria-hidden="true" />
+          </span>
           <span>Trishala Gosar</span>
         </a>
         <div class="nav-links">
-          <a href="../index.html#work">UX Work</a>
-          <a href="../genai-customer-satisfaction.html">Case Study</a>
+          <a href="../index.html">Home</a>
+          <a href="../index.html#work">Work</a>
+          <a href="../games/index.html">Play</a>
           <a href="../index.html#contact">Contact</a>
         </div>
       </div>
@@ -324,18 +400,20 @@
 
     <main>
       <header class="wrap hero">
-        <div>
+        <div class="play-card">
           <p class="eyebrow">Game Design</p>
-          <h1>Games shaped through systems, play, and interaction.</h1>
+          <h1>I started my digital design journey from Game design.</h1>
           <p class="lede">
-            A collection of game design work spanning PC, VR, puzzle, strategy,
-            mechanics-led level design, and character development.
+            Dive into my creative expertise.
           </p>
         </div>
-        <aside class="summary-card">
-          <strong>6</strong>
-          <span>game projects from Trishala's public portfolio, organized for quick review.</span>
-        </aside>
+        <div class="play-stage-shell">
+          <div class="play-stage" aria-label="Play page hero artwork">
+            <div class="play-stage-art">
+              <img src="../Logo%20642x634.png" alt="Illustrated Trishala logo artwork." />
+            </div>
+          </div>
+        </div>
       </header>
 
       <section class="wrap" aria-label="Game projects">

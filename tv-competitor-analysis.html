@@ -1,0 +1,679 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Competitor analysis comparing Samsung Frame TV, Hisense, and Apple TV 4K across positioning, features, target users, and strategic insights."
+    />
+    <title>TV Competitor Analysis | Frame TV vs Hisense vs Apple TV</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --ink: #0f172a;
+        --text: #334155;
+        --muted: #64748b;
+        --line: #e2e8f0;
+        --soft: #f8fafc;
+        --blue: #2563eb;
+        --green: #16a34a;
+        --purple: #9333ea;
+        --aqua-rgb: 70, 199, 195;
+        --orchid-rgb: 198, 118, 180;
+        --red: #ef4444;
+        --card: #ffffff;
+        --shadow: 0 12px 32px rgba(15, 23, 42, 0.08);
+      }
+
+      body {
+        min-height: 100vh;
+        color: var(--text);
+        background-color: #ffffff;
+        background-image:
+          radial-gradient(circle at 18% 12%, rgba(37, 99, 235, 0.08), transparent 28rem),
+          radial-gradient(circle at 92% 8%, rgba(var(--orchid-rgb), 0.12), transparent 28rem),
+          radial-gradient(#e5e7eb 1px, transparent 1px);
+        background-size: auto, auto, 16px 16px;
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+          sans-serif;
+        line-height: 1.5;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        border-bottom: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.88);
+        backdrop-filter: blur(16px);
+        box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08);
+      }
+
+      .header-content,
+      main,
+      .footer-content {
+        width: min(1280px, calc(100% - 40px));
+        margin: 0 auto;
+      }
+
+      .header-content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 1.35rem 0;
+      }
+
+      .header-brand {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 0.4rem;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+
+      .nav-links a {
+        padding: 0.5rem 0.7rem;
+        border-radius: 0.5rem;
+        color: var(--muted);
+        font-size: 0.92rem;
+        font-weight: 700;
+        text-decoration: none;
+      }
+
+      .nav-links a:hover {
+        color: var(--ink);
+        background: rgba(37, 99, 235, 0.08);
+      }
+
+      .header-icon {
+        width: 2.25rem;
+        height: 2.25rem;
+        color: var(--blue);
+      }
+
+      h1 {
+        color: var(--ink);
+        font-size: clamp(1.6rem, 3vw, 2rem);
+        line-height: 1.1;
+      }
+
+      .header-subtitle {
+        margin-top: 0.25rem;
+        color: var(--muted);
+      }
+
+      main {
+        padding: 3rem 0 0;
+      }
+
+      section {
+        margin-bottom: 3rem;
+      }
+
+      h2 {
+        margin-bottom: 1.5rem;
+        color: var(--ink);
+        font-size: clamp(1.35rem, 2.3vw, 1.65rem);
+        line-height: 1.15;
+      }
+
+      .product-grid,
+      .insights-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+      }
+
+      .product-card,
+      .comparison-table-wrapper,
+      .insight-card {
+        overflow: hidden;
+        border: 1px solid rgba(226, 232, 240, 0.86);
+        border-radius: 0.75rem;
+        background: var(--card);
+        box-shadow: var(--shadow);
+      }
+
+      .product-card {
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+
+      .product-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
+      }
+
+      .product-image {
+        height: 12rem;
+        background: var(--line);
+      }
+
+      .product-image img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .product-content,
+      .insight-card {
+        padding: 1.5rem;
+      }
+
+      .product-name {
+        margin-bottom: 0.25rem;
+        color: var(--ink);
+        font-size: 1.25rem;
+      }
+
+      .product-tagline {
+        margin-bottom: 1rem;
+        color: var(--muted);
+        font-style: italic;
+      }
+
+      .product-meta {
+        margin-bottom: 1rem;
+      }
+
+      .meta-item,
+      .strength-list li,
+      .weakness-list li,
+      .insight-list li {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.5rem;
+      }
+
+      .meta-item {
+        align-items: center;
+        margin-bottom: 0.75rem;
+        font-size: 0.875rem;
+      }
+
+      .icon-sm {
+        width: 1rem;
+        height: 1rem;
+        flex: 0 0 auto;
+      }
+
+      .icon-dollar {
+        color: var(--green);
+      }
+
+      .icon-award {
+        color: var(--blue);
+      }
+
+      .icon-trend {
+        color: var(--purple);
+      }
+
+      .icon-check {
+        color: #22c55e;
+      }
+
+      .icon-x {
+        color: var(--red);
+      }
+
+      .section-divider {
+        margin-top: 1rem;
+        padding-top: 1rem;
+        border-top: 1px solid var(--line);
+      }
+
+      .section-title {
+        margin-bottom: 0.5rem;
+        color: #374151;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+      }
+
+      .strength-list,
+      .weakness-list,
+      .insight-list {
+        list-style: none;
+      }
+
+      .strength-list li,
+      .weakness-list li,
+      .insight-list li {
+        margin-bottom: 0.55rem;
+        color: #475569;
+        font-size: 0.875rem;
+      }
+
+      .comparison-table-wrapper {
+        overflow-x: auto;
+      }
+
+      table {
+        width: 100%;
+        min-width: 760px;
+        border-collapse: collapse;
+      }
+
+      thead {
+        background: #f1f5f9;
+      }
+
+      th,
+      td {
+        padding: 1rem 1.5rem;
+        border-bottom: 1px solid #f1f5f9;
+        text-align: left;
+        font-size: 0.875rem;
+      }
+
+      th {
+        border-bottom-color: var(--line);
+        color: var(--ink);
+        font-weight: 700;
+      }
+
+      td {
+        color: #374151;
+      }
+
+      tbody tr:nth-child(even) {
+        background: var(--soft);
+      }
+
+      .insight-title {
+        margin-bottom: 0.75rem;
+        color: var(--ink);
+        font-size: 1.125rem;
+      }
+
+      .bullet {
+        width: 0.375rem;
+        height: 0.375rem;
+        margin-top: 0.5rem;
+        border-radius: 50%;
+        background: #3b82f6;
+        flex: 0 0 auto;
+      }
+
+      .bullet-purple {
+        background: var(--purple);
+      }
+
+      .demographic-section {
+        margin-bottom: 0.85rem;
+        color: #374151;
+        font-size: 0.875rem;
+      }
+
+      .demographic-label {
+        margin-bottom: 0.25rem;
+        color: var(--ink);
+        font-weight: 700;
+      }
+
+      footer {
+        margin-top: 4rem;
+        border-top: 1px solid var(--line);
+        background: #ffffff;
+      }
+
+      .footer-content {
+        padding: 1.5rem 0;
+        color: #94a3b8;
+        text-align: center;
+        font-size: 0.875rem;
+      }
+
+      @media (max-width: 768px) {
+        .header-content,
+        main,
+        .footer-content {
+          width: min(100% - 28px, 1280px);
+        }
+
+        .header-content {
+          align-items: flex-start;
+          flex-direction: column;
+          padding: 1rem 0;
+        }
+
+        .nav-links {
+          width: 100%;
+          justify-content: flex-start;
+        }
+
+        main {
+          padding-top: 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="header-content">
+        <div class="header-brand">
+          <svg class="header-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8-8 8-4-4-6 6" />
+          </svg>
+          <div>
+            <h1>TV Competitor Analysis</h1>
+            <p class="header-subtitle">Samsung Frame TV vs Hisense vs Apple TV 4K</p>
+          </div>
+        </div>
+        <nav class="nav-links" aria-label="Primary navigation">
+          <a href="index.html">Home</a>
+          <a href="index.html#work">Work</a>
+          <a href="games/index.html">Play</a>
+          <a href="index.html#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section>
+        <h2>Product Overview</h2>
+        <div class="product-grid">
+          <article class="product-card">
+            <div class="product-image">
+              <img
+                src="https://images.unsplash.com/photo-1730324443683-c636fe56bb50?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxTYW1zdW5nJTIwRnJhbWUlMjBUViUyMG1vZGVybiUyMHRlbGV2aXNpb24lMjBhcnR8ZW58MXx8fHwxNzgwODU0Njc5fDA&ixlib=rb-4.1.0&q=80&w=1080"
+                alt="Samsung Frame TV in a modern interior"
+              />
+            </div>
+            <div class="product-content">
+              <h3 class="product-name">Samsung Frame TV</h3>
+              <p class="product-tagline">The Art of Television</p>
+
+              <div class="product-meta">
+                <div class="meta-item">
+                  <svg class="icon-sm icon-dollar" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
+                  </svg>
+                  <span><strong>$999 - $2,999</strong></span>
+                </div>
+                <div class="meta-item">
+                  <svg class="icon-sm icon-award" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 0 1 1.946-.806 3.42 3.42 0 0 0 4.438 0 3.42 3.42 0 0 1 1.946.806 3.42 3.42 0 0 0 3.138 3.138 3.42 3.42 0 0 1 .806 1.946 3.42 3.42 0 0 0 0 4.438 3.42 3.42 0 0 1-.806 1.946 3.42 3.42 0 0 0-3.138 3.138 3.42 3.42 0 0 1-1.946.806 3.42 3.42 0 0 0-4.438 0 3.42 3.42 0 0 1-1.946-.806 3.42 3.42 0 0 0-3.138-3.138 3.42 3.42 0 0 1-.806-1.946 3.42 3.42 0 0 0 0-4.438 3.42 3.42 0 0 1 .806-1.946 3.42 3.42 0 0 0 3.138-3.138z" />
+                  </svg>
+                  <span>Design-conscious homeowners</span>
+                </div>
+                <div class="meta-item">
+                  <svg class="icon-sm icon-trend" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8-8 8-4-4-6 6" />
+                  </svg>
+                  <span>15% premium TV market</span>
+                </div>
+              </div>
+
+              <div class="section-divider">
+                <p class="section-title">Key Strengths</p>
+                <ul class="strength-list">
+                  <li><span class="icon-sm icon-check">✓</span><span>Art Mode display</span></li>
+                  <li><span class="icon-sm icon-check">✓</span><span>Customizable bezels</span></li>
+                  <li><span class="icon-sm icon-check">✓</span><span>Premium design</span></li>
+                </ul>
+              </div>
+
+              <div class="section-divider">
+                <p class="section-title">Challenges</p>
+                <ul class="weakness-list">
+                  <li><span class="icon-sm icon-x">×</span><span>Higher price point</span></li>
+                  <li><span class="icon-sm icon-x">×</span><span>Limited smart features vs competitors</span></li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="product-image">
+              <img
+                src="https://images.unsplash.com/photo-1646861039459-fd9e3aabf3fb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwyfHxzbWFydCUyMHRlbGV2aXNpb24lMjBsaXZpbmclMjByb29tJTIwZW50ZXJ0YWlubWVudHxlbnwxfHx8fDE3ODA4NTQ2ODB8MA&ixlib=rb-4.1.0&q=80&w=1080"
+                alt="Hisense smart TV in a living room"
+              />
+            </div>
+            <div class="product-content">
+              <h3 class="product-name">Hisense</h3>
+              <p class="product-tagline">Quality Meets Value</p>
+
+              <div class="product-meta">
+                <div class="meta-item">
+                  <svg class="icon-sm icon-dollar" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
+                  </svg>
+                  <span><strong>$399 - $1,499</strong></span>
+                </div>
+                <div class="meta-item">
+                  <svg class="icon-sm icon-award" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 0 1 1.946-.806 3.42 3.42 0 0 0 4.438 0 3.42 3.42 0 0 1 1.946.806 3.42 3.42 0 0 0 3.138 3.138 3.42 3.42 0 0 1 .806 1.946 3.42 3.42 0 0 0 0 4.438 3.42 3.42 0 0 1-.806 1.946 3.42 3.42 0 0 0-3.138 3.138 3.42 3.42 0 0 1-1.946.806 3.42 3.42 0 0 0-4.438 0 3.42 3.42 0 0 1-1.946-.806 3.42 3.42 0 0 0-3.138-3.138 3.42 3.42 0 0 1-.806-1.946 3.42 3.42 0 0 0 0-4.438 3.42 3.42 0 0 1 .806-1.946 3.42 3.42 0 0 0 3.138-3.138z" />
+                  </svg>
+                  <span>Budget-conscious families</span>
+                </div>
+                <div class="meta-item">
+                  <svg class="icon-sm icon-trend" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8-8 8-4-4-6 6" />
+                  </svg>
+                  <span>8% global TV market</span>
+                </div>
+              </div>
+
+              <div class="section-divider">
+                <p class="section-title">Key Strengths</p>
+                <ul class="strength-list">
+                  <li><span class="icon-sm icon-check">✓</span><span>Competitive pricing</span></li>
+                  <li><span class="icon-sm icon-check">✓</span><span>Good value proposition</span></li>
+                  <li><span class="icon-sm icon-check">✓</span><span>Wide size range</span></li>
+                </ul>
+              </div>
+
+              <div class="section-divider">
+                <p class="section-title">Challenges</p>
+                <ul class="weakness-list">
+                  <li><span class="icon-sm icon-x">×</span><span>Brand perception</span></li>
+                  <li><span class="icon-sm icon-x">×</span><span>Software experience</span></li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="product-image">
+              <img
+                src="https://images.unsplash.com/photo-1621685950846-9323d993bbf3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwyfHxBcHBsZSUyMFRWJTIwZGV2aWNlJTIwc3RyZWFtaW5nJTIwYm94fGVufDF8fHx8MTc4MDg1NDY4MXww&ixlib=rb-4.1.0&q=80&w=1080"
+                alt="Apple TV 4K streaming box"
+              />
+            </div>
+            <div class="product-content">
+              <h3 class="product-name">Apple TV 4K</h3>
+              <p class="product-tagline">Entertainment Elevated</p>
+
+              <div class="product-meta">
+                <div class="meta-item">
+                  <svg class="icon-sm icon-dollar" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
+                  </svg>
+                  <span><strong>$129 - $149</strong></span>
+                </div>
+                <div class="meta-item">
+                  <svg class="icon-sm icon-award" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 0 1 1.946-.806 3.42 3.42 0 0 0 4.438 0 3.42 3.42 0 0 1 1.946.806 3.42 3.42 0 0 0 3.138 3.138 3.42 3.42 0 0 1 .806 1.946 3.42 3.42 0 0 0 0 4.438 3.42 3.42 0 0 1-.806 1.946 3.42 3.42 0 0 0-3.138 3.138 3.42 3.42 0 0 1-1.946.806 3.42 3.42 0 0 0-4.438 0 3.42 3.42 0 0 1-1.946-.806 3.42 3.42 0 0 0-3.138-3.138 3.42 3.42 0 0 1-.806-1.946 3.42 3.42 0 0 0 0-4.438 3.42 3.42 0 0 1 .806-1.946 3.42 3.42 0 0 0 3.138-3.138z" />
+                  </svg>
+                  <span>Apple ecosystem users</span>
+                </div>
+                <div class="meta-item">
+                  <svg class="icon-sm icon-trend" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8-8 8-4-4-6 6" />
+                  </svg>
+                  <span>25% streaming device market</span>
+                </div>
+              </div>
+
+              <div class="section-divider">
+                <p class="section-title">Key Strengths</p>
+                <ul class="strength-list">
+                  <li><span class="icon-sm icon-check">✓</span><span>Seamless Apple integration</span></li>
+                  <li><span class="icon-sm icon-check">✓</span><span>Premium software</span></li>
+                  <li><span class="icon-sm icon-check">✓</span><span>Gaming capabilities</span></li>
+                </ul>
+              </div>
+
+              <div class="section-divider">
+                <p class="section-title">Challenges</p>
+                <ul class="weakness-list">
+                  <li><span class="icon-sm icon-x">×</span><span>Requires separate display</span></li>
+                  <li><span class="icon-sm icon-x">×</span><span>Limited to streaming</span></li>
+                </ul>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section>
+        <h2>Feature Comparison</h2>
+        <div class="comparison-table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Category</th>
+                <th>Samsung Frame TV</th>
+                <th>Hisense</th>
+                <th>Apple TV 4K</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Display Technology</strong></td>
+                <td>QLED 4K</td>
+                <td>ULED/Mini-LED</td>
+                <td>N/A (Streaming Device)</td>
+              </tr>
+              <tr>
+                <td><strong>Screen Sizes</strong></td>
+                <td>32&quot; - 85&quot;</td>
+                <td>43&quot; - 100&quot;</td>
+                <td>N/A</td>
+              </tr>
+              <tr>
+                <td><strong>Smart Platform</strong></td>
+                <td>Tizen OS</td>
+                <td>Google TV / VIDAA</td>
+                <td>tvOS</td>
+              </tr>
+              <tr>
+                <td><strong>HDR Support</strong></td>
+                <td>HDR10+</td>
+                <td>Dolby Vision, HDR10+</td>
+                <td>Dolby Vision, HDR10+</td>
+              </tr>
+              <tr>
+                <td><strong>Refresh Rate</strong></td>
+                <td>120Hz</td>
+                <td>60Hz - 120Hz</td>
+                <td>N/A</td>
+              </tr>
+              <tr>
+                <td><strong>Gaming Features</strong></td>
+                <td>Game Mode, ALLM</td>
+                <td>Game Mode Pro</td>
+                <td>Apple Arcade, Controller Support</td>
+              </tr>
+              <tr>
+                <td><strong>Voice Assistant</strong></td>
+                <td>Bixby, Alexa</td>
+                <td>Google Assistant</td>
+                <td>Siri</td>
+              </tr>
+              <tr>
+                <td><strong>Unique Feature</strong></td>
+                <td>Art Mode</td>
+                <td>Built-in ATSC 3.0</td>
+                <td>AirPlay, HomeKit</td>
+              </tr>
+              <tr>
+                <td><strong>Warranty</strong></td>
+                <td>1 Year</td>
+                <td>1-2 Years</td>
+                <td>1 Year</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2>Market Insights</h2>
+        <div class="insights-grid">
+          <article class="insight-card">
+            <h3 class="insight-title">Market Positioning</h3>
+            <ul class="insight-list">
+              <li><span class="bullet"></span><span><strong>Samsung Frame TV:</strong> Premium lifestyle product with a design-first approach.</span></li>
+              <li><span class="bullet"></span><span><strong>Hisense:</strong> Value leader with competitive features and aggressive price points.</span></li>
+              <li><span class="bullet"></span><span><strong>Apple TV 4K:</strong> Ecosystem play focused on streaming experience rather than display hardware.</span></li>
+            </ul>
+          </article>
+
+          <article class="insight-card">
+            <h3 class="insight-title">Competitive Advantages</h3>
+            <ul class="insight-list">
+              <li><span class="icon-sm icon-check">✓</span><span><strong>Frame TV:</strong> Designed as an art piece for interior-focused consumers.</span></li>
+              <li><span class="icon-sm icon-check">✓</span><span><strong>Hisense:</strong> Strong price-to-performance ratio and broad distribution.</span></li>
+              <li><span class="icon-sm icon-check">✓</span><span><strong>Apple TV:</strong> Strong software integration, gaming, and app ecosystem.</span></li>
+            </ul>
+          </article>
+
+          <article class="insight-card">
+            <h3 class="insight-title">Target Demographics</h3>
+            <div>
+              <div class="demographic-section">
+                <p class="demographic-label">Samsung Frame TV</p>
+                <p>Urban professionals, ages 30-50, household income $100K+, design-conscious homeowners.</p>
+              </div>
+              <div class="demographic-section">
+                <p class="demographic-label">Hisense</p>
+                <p>Budget-conscious families, ages 25-45, household income $50K-$80K, value seekers.</p>
+              </div>
+              <div class="demographic-section">
+                <p class="demographic-label">Apple TV 4K</p>
+                <p>Apple users, ages 25-55, household income $75K+, streaming-first consumers.</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="insight-card">
+            <h3 class="insight-title">Strategic Recommendations</h3>
+            <ul class="insight-list">
+              <li><span class="bullet bullet-purple"></span><span>Focus on unique value propositions rather than direct feature-by-feature competition.</span></li>
+              <li><span class="bullet bullet-purple"></span><span>Consider bundling strategies for ecosystem lock-in.</span></li>
+              <li><span class="bullet bullet-purple"></span><span>Monitor Hisense's aggressive pricing strategy in key markets.</span></li>
+            </ul>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-content">Competitor Analysis &bull; Last Updated: June 2026</div>
+    </footer>
+  </body>
+</html>
