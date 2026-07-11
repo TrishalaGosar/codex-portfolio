@@ -8,7 +8,7 @@
       content="Portfolio of Trishala Gosar, a product designer focused on transforming user inputs into meaningful product experiences."
     />
     <title>Trishala Gosar | Product Designer</title>
-    <link rel="icon" type="image/png" href="Logo%20642x634.png" />
+    <link rel="icon" type="image/png" href="favicon.png" />
     <style>
       :root {
         --ink: #181713;
@@ -17,7 +17,7 @@
         --surface: #ffffff;
         --line: #ded9cc;
         --sage: #537568;
-        --terra: #b35c3e;
+        --terra: #3f746c;
         --gold: #d7a948;
         --sky: #7ca7b8;
         --aqua-rgb: 70, 199, 195;
@@ -196,6 +196,19 @@
       .button.secondary {
         background: transparent;
         color: var(--ink);
+      }
+
+      .button.link-accent {
+        min-height: auto;
+        padding: 0;
+        border: 0;
+        border-radius: 0;
+        background: transparent;
+        color: var(--terra);
+      }
+
+      .button.link-accent:hover {
+        color: #96462d;
       }
 
       .button svg,
@@ -382,32 +395,28 @@
 
       .skills-grid {
         display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 16px;
+        gap: 24px;
       }
 
-      .skill-card {
-        min-height: 100%;
-      }
-
-      .skill-list {
+      .skill-row {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-        gap: 10px;
-        margin-top: 18px;
+        gap: 8px;
       }
 
-      .skill-pill {
-        display: inline-flex;
-        align-items: center;
-        min-height: 40px;
-        padding: 0 14px;
-        border: 1px solid var(--line);
-        border-radius: 999px;
-        background: #fbfaf6;
-        color: #403d36;
-        font-size: 0.88rem;
-        font-weight: 560;
+      .skill-type {
+        margin: 0;
+        color: var(--terra);
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 1.42rem;
+        font-weight: 500;
+        line-height: 1.2;
+      }
+
+      .skill-line {
+        margin: 0;
+        color: #2f3d46;
+        font-size: 1.14rem;
+        line-height: 1.62;
       }
 
       .projects-rail {
@@ -472,7 +481,7 @@
       .project-tile {
         position: relative;
         overflow: hidden;
-        flex: 0 0 min(380px, 84vw);
+        flex: 0 0 clamp(300px, 32vw, 344px);
         min-height: 100%;
         padding: 0;
         scroll-snap-align: start;
@@ -480,6 +489,7 @@
 
       .project-link {
         display: grid;
+        grid-template-rows: auto 1fr;
         min-height: 100%;
         text-decoration: none;
       }
@@ -491,17 +501,20 @@
         background: #f4f0e6;
       }
 
-      .project-thumb img {
+      .project-thumb > img {
         display: block;
         width: 100%;
         height: 100%;
         object-fit: cover;
+        position: relative;
+        z-index: 0;
       }
 
       .project-badge {
         position: absolute;
         left: 14px;
         top: 14px;
+        z-index: 2;
         padding: 6px 10px;
         border-radius: 999px;
         background: rgba(24, 23, 19, 0.8);
@@ -513,6 +526,7 @@
       .project-body {
         display: grid;
         gap: 12px;
+        align-content: start;
         padding: 22px;
       }
 
@@ -528,6 +542,7 @@
         display: flex;
         gap: 8px;
         flex-wrap: wrap;
+        margin-bottom: 6px;
       }
 
       .project-meta span {
@@ -544,7 +559,7 @@
         font-size: 0.92rem;
       }
 
-      .project-tile:hover .project-thumb img {
+      .project-tile:hover .project-thumb > img {
         transform: scale(1.03);
         transition: transform 220ms ease;
       }
@@ -782,6 +797,42 @@
         pointer-events: none;
       }
 
+      @keyframes float-slow {
+        0%,
+        100% {
+          transform: translate3d(0, 0, 0) rotate(0deg);
+        }
+
+        50% {
+          transform: translate3d(0, -12px, 0) rotate(4deg);
+        }
+      }
+
+      @keyframes sway-wide {
+        0%,
+        100% {
+          transform: translate3d(0, 0, 0);
+        }
+
+        35% {
+          transform: translate3d(10px, -8px, 0);
+        }
+
+        70% {
+          transform: translate3d(-8px, 6px, 0);
+        }
+      }
+
+      @keyframes spin-slow {
+        from {
+          transform: rotate(0deg);
+        }
+
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
       footer {
         padding: 28px 0 40px;
         color: var(--muted);
@@ -816,6 +867,10 @@
 
         .skills-grid {
           grid-template-columns: 1fr;
+        }
+
+        .skill-row {
+          gap: 8px;
         }
 
         .timeline-item {
@@ -905,30 +960,16 @@
               <a
                 class="button"
                 href="Resume_Trishala_Gosar_Product_Designer.pdf"
-                download
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <svg aria-hidden="true" viewBox="0 0 24 24">
-                  <path d="M12 4v11" />
-                  <path d="m8 11 4 4 4-4" />
-                  <path d="M5 19h14" />
+                  <path d="M7 17 17 7" />
+                  <path d="M7 7h10v10" />
                 </svg>
                 Resume
               </a>
-              <a class="button secondary" href="#work">
-                <svg aria-hidden="true" viewBox="0 0 24 24">
-                  <path d="M4 5h16" />
-                  <path d="M4 12h16" />
-                  <path d="M4 19h10" />
-                </svg>
-                View Projects
-              </a>
-              <a class="button secondary" href="#contact">
-                <svg aria-hidden="true" viewBox="0 0 24 24">
-                  <path d="M22 2 11 13" />
-                  <path d="m22 2-7 20-4-9-9-4 20-7Z" />
-                </svg>
-                Contact
-              </a>
+              <a class="button link-accent" href="#work">Scroll to Projects</a>
             </div>
           </div>
 
@@ -954,61 +995,24 @@
         <section id="about" class="wrap">
           <div class="section-head">
             <h2>Skills</h2>
-            <p>
-              Design capabilities and working tools grouped clearly for product,
-              interaction, and systems work.
-            </p>
           </div>
           <div class="skills-grid">
-            <article class="card skill-card">
-              <span class="icon-badge" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <circle cx="11" cy="11" r="7" />
-                  <path d="m20 20-4-4" />
-                </svg>
-              </span>
-              <h3>Design Skills</h3>
-              <p>
-                Core product and interaction design strengths used across research,
-                systems thinking, and execution.
+            <div class="skill-row">
+              <h3 class="skill-type">Design Skills</h3>
+              <p class="skill-line">
+                User Research • Wireframing &amp; Prototyping • Interaction Design •
+                Information Architecture • Usability Testing • Design Systems •
+                Workflow Design • Strategy &amp; Problem Solving • Gamification for
+                Design
               </p>
-              <div class="skill-list">
-                <span class="skill-pill">User Research</span>
-                <span class="skill-pill">Wireframing &amp; Prototyping</span>
-                <span class="skill-pill">Interaction Design</span>
-                <span class="skill-pill">Information Architecture</span>
-                <span class="skill-pill">Usability Testing</span>
-                <span class="skill-pill">Design Systems</span>
-                <span class="skill-pill">Workflow Design</span>
-                <span class="skill-pill">Strategy &amp; Problem Solving</span>
-                <span class="skill-pill">Gamification for Design</span>
-              </div>
-            </article>
-            <article class="card skill-card">
-              <span class="icon-badge terra" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <path d="M12 3v18" />
-                  <path d="M5 8h14" />
-                  <path d="M7 16h10" />
-                </svg>
-              </span>
-              <h3>Software And Tech</h3>
-              <p>
-                The tools and environments used for product design, documentation,
-                collaboration, prototyping, and AI-assisted implementation.
+            </div>
+            <div class="skill-row">
+              <h3 class="skill-type">Software And Tech</h3>
+              <p class="skill-line">
+                Figma • Axure • Adobe Suite • VS Code • Cline AI • Unity • HTML5*
+                &amp; CSS* • Jira • Confluence
               </p>
-              <div class="skill-list">
-                <span class="skill-pill">Figma</span>
-                <span class="skill-pill">Axure</span>
-                <span class="skill-pill">Adobe Suite</span>
-                <span class="skill-pill">VS Code</span>
-                <span class="skill-pill">Cline AI</span>
-                <span class="skill-pill">Unity</span>
-                <span class="skill-pill">HTML5* &amp; CSS*</span>
-                <span class="skill-pill">Jira</span>
-                <span class="skill-pill">Confluence</span>
-              </div>
-            </article>
+            </div>
           </div>
           <p class="project-note" style="margin-top: 14px">
             * AI assisted
@@ -1025,7 +1029,7 @@
           </div>
           <div class="projects-rail" id="projectsRail" aria-label="Project tiles">
             <article class="card project-tile">
-              <a class="project-link" href="genai-customer-satisfaction.html">
+              <a class="project-link" href="CX+.html">
                 <div class="project-thumb">
                   <img
                     src="assets/generative-ai-coss-case.png"
@@ -1034,7 +1038,7 @@
                   <span class="project-badge">Enterprise AI</span>
                 </div>
                 <div class="project-body">
-                  <h3>Customer Experience +</h3>
+                  <h3>CX+</h3>
                   <p>
                     A GenAI service UX case study for faster support, clearer workflows,
                     and better handoffs across fragmented service channels.
@@ -1043,6 +1047,85 @@
                     <span>Research</span>
                     <span>Journey mapping</span>
                     <span>Enterprise UX</span>
+                  </div>
+                  <span class="project-footer">
+                    Open project
+                    <svg aria-hidden="true" viewBox="0 0 24 24">
+                      <path d="M7 17 17 7" />
+                      <path d="M7 7h10v10" />
+                    </svg>
+                  </span>
+                </div>
+              </a>
+            </article>
+            <article class="card project-tile">
+              <a class="project-link" href="ai-assistant-for-education.html">
+                <div
+                  class="project-thumb"
+                  style="
+                    background:
+                      radial-gradient(circle at 20% 18%, rgba(255, 255, 255, 0.24), transparent 5rem),
+                      linear-gradient(
+                        135deg,
+                        rgba(var(--aqua-rgb), 0.88),
+                        rgba(124, 167, 184, 0.76),
+                        rgba(var(--orchid-rgb), 0.62)
+                      );
+                  "
+                >
+                  <div
+                    aria-hidden="true"
+                    style="display: grid; gap: 10px; padding: 18px; align-content: center; min-height: 100%;"
+                  >
+                    <div
+                      style="
+                        padding: 14px;
+                        border: 1px solid rgba(255, 255, 255, 0.28);
+                        border-radius: 8px;
+                        background: rgba(255, 255, 255, 0.16);
+                        color: #fff;
+                        font-weight: 600;
+                      "
+                    >
+                      AI study companion
+                    </div>
+                    <div
+                      style="
+                        width: 82%;
+                        padding: 12px 14px;
+                        border: 1px solid rgba(255, 255, 255, 0.24);
+                        border-radius: 8px;
+                        background: rgba(24, 23, 19, 0.18);
+                        color: #fff;
+                      "
+                    >
+                      Explain this in a simpler way.
+                    </div>
+                    <div
+                      style="
+                        width: 76%;
+                        justify-self: end;
+                        padding: 12px 14px;
+                        border-radius: 8px;
+                        background: rgba(255, 255, 255, 0.9);
+                        color: var(--ink);
+                      "
+                    >
+                      Start with the basics, then try one quick practice prompt.
+                    </div>
+                  </div>
+                  <span class="project-badge">Education AI</span>
+                </div>
+                <div class="project-body">
+                  <h3>AI Assistant for Education</h3>
+                  <p>
+                    A dedicated project page for an AI learning assistant concept with a
+                    responsive embedded video showcase built directly into the portfolio.
+                  </p>
+                  <div class="project-meta">
+                    <span>AI UX</span>
+                    <span>Education</span>
+                    <span>Video embed</span>
                   </div>
                   <span class="project-footer">
                     Open project
@@ -1123,24 +1206,22 @@
           <div class="timeline">
             <article class="timeline-item">
               <div>
-                <div class="place">Samsung R&amp;D Institute India - Delhi</div>
-                <time>July 2024 - Present / Noida, India</time>
+                <div class="place">Samsung</div>
+                <time>July 2023 - Present / Noida, India</time>
               </div>
               <div>
                 <h3>Product Designer</h3>
                 <p class="lede">
+                  Samsung R&amp;D Institute India - Delhi · July 2024 - Present
+                </p>
+                <p class="lede">
                   Designing scalable UX across GenAI, learning tools, platforms, TV
                   ecosystem configuration, and smart appliances.
                 </p>
-              </div>
-            </article>
-            <article class="timeline-item">
-              <div>
-                <div class="place">Samsung India</div>
-                <time>July 2023 - December 2023 / Noida, India</time>
-              </div>
-              <div>
-                <h3>Experience Designer</h3>
+                <h3 style="margin-top: 20px">UX Design Intern</h3>
+                <p class="lede">
+                  Samsung India · July 2023 - December 2023
+                </p>
                 <p class="lede">
                   Product experience work before moving into the current UX role.
                 </p>

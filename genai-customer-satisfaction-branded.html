@@ -7,22 +7,23 @@
       name="description"
       content="Detailed UX case study by Trishala Gosar: Use of Generative AI for enhancing Customer Satisfaction."
     />
-    <title>GenAI Customer Satisfaction Case Study | Trishala Gosar</title>
-    <link rel="icon" type="image/png" href="Logo%20642x634.png" />
+    <title>CX+ Brand Preview | Trishala Gosar</title>
+    <link rel="icon" type="image/png" href="favicon.png" />
     <style>
       :root {
-        --ink: #181713;
-        --muted: #6f6b61;
-        --paper: #fbfaf6;
+        --ink: #17202a;
+        --muted: #5d6876;
+        --paper: #f5f8fc;
         --surface: #ffffff;
-        --line: #ded9cc;
-        --sage: #537568;
-        --terra: #b35c3e;
-        --gold: #d7a948;
-        --sky: #7ca7b8;
+        --line: #d8e0ea;
+        --sage: #2f6e73;
+        --terra: #3f746c;
+        --gold: #cf9a42;
+        --sky: #7f9fcb;
         --aqua-rgb: 70, 199, 195;
-        --orchid-rgb: 198, 118, 180;
-        --shadow: 0 18px 44px rgba(24, 23, 19, 0.12);
+        --orchid-rgb: 146, 126, 196;
+        --shadow: 0 22px 54px rgba(23, 32, 42, 0.1);
+        --signal-rgb: 64, 126, 198;
       }
 
       * {
@@ -36,12 +37,13 @@
       body {
         margin: 0;
         color: var(--ink);
-        background-color: #ffffff;
+        background-color: var(--paper);
         background-image:
-          radial-gradient(circle at 8% 5%, rgba(215, 169, 72, 0.12), transparent 28rem),
-          radial-gradient(circle at 95% 0%, rgba(var(--orchid-rgb), 0.14), transparent 30rem),
-          radial-gradient(#e5e7eb 1px, transparent 1px);
-        background-size: auto, auto, 16px 16px;
+          radial-gradient(circle at 10% 6%, rgba(var(--signal-rgb), 0.12), transparent 26rem),
+          radial-gradient(circle at 92% 2%, rgba(var(--orchid-rgb), 0.1), transparent 28rem),
+          linear-gradient(rgba(216, 224, 234, 0.6) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(216, 224, 234, 0.6) 1px, transparent 1px);
+        background-size: auto, auto, 22px 22px, 22px 22px;
         font-family:
           Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
           sans-serif;
@@ -61,8 +63,8 @@
         position: sticky;
         top: 0;
         z-index: 10;
-        border-bottom: 1px solid rgba(222, 217, 204, 0.76);
-        background: rgba(251, 250, 246, 0.9);
+        border-bottom: 1px solid rgba(216, 224, 234, 0.92);
+        background: rgba(245, 248, 252, 0.86);
         backdrop-filter: blur(16px);
       }
 
@@ -77,7 +79,6 @@
       .brand,
       .nav-links a,
       .button {
-        font-weight: 800;
         text-decoration: none;
       }
 
@@ -85,6 +86,8 @@
         display: inline-flex;
         align-items: center;
         gap: 12px;
+        font-weight: 700;
+        letter-spacing: 0.01em;
       }
 
       .brand span {
@@ -117,15 +120,12 @@
         border-radius: 8px;
         color: var(--muted);
         font-size: 0.94rem;
+        font-weight: 560;
       }
 
       .nav-links a:hover {
         color: var(--ink);
-        background: linear-gradient(
-          135deg,
-          rgba(var(--aqua-rgb), 0.12),
-          rgba(var(--orchid-rgb), 0.1)
-        );
+        background: rgba(var(--signal-rgb), 0.08);
       }
 
       .case-minimap {
@@ -149,9 +149,9 @@
       .case-minimap-links a {
         width: 12px;
         height: 12px;
-        border: 1px solid rgba(83, 117, 104, 0.4);
+        border: 1px solid rgba(47, 110, 115, 0.34);
         border-radius: 50%;
-        background: rgba(83, 117, 104, 0.14);
+        background: rgba(47, 110, 115, 0.12);
         font-size: 0;
         line-height: 0;
         text-decoration: none;
@@ -173,12 +173,12 @@
         grid-template-columns: minmax(0, 0.92fr) minmax(320px, 1.08fr);
         gap: clamp(28px, 6vw, 72px);
         align-items: center;
-        padding: 68px 0 54px;
+        padding: 78px 0 56px;
       }
 
       .eyebrow {
         margin: 0 0 14px;
-        color: var(--terra);
+        color: var(--sage);
         font-size: 0.8rem;
         font-weight: 800;
         letter-spacing: 0.12em;
@@ -201,16 +201,17 @@
       h1 {
         max-width: none;
         margin-bottom: 22px;
-        font-size: clamp(2.5rem, 5.4vw, 4.8rem);
-        line-height: 0.96;
-        letter-spacing: 0;
-        white-space: nowrap;
+        font-size: clamp(3.4rem, 7vw, 6rem);
+        line-height: 0.9;
+        letter-spacing: -0.04em;
+        color: #10202d;
       }
 
       h2 {
         margin-bottom: 18px;
-        font-size: clamp(2rem, 4vw, 3.6rem);
-        line-height: 1;
+        font-size: clamp(2rem, 4vw, 3.35rem);
+        line-height: 0.98;
+        letter-spacing: -0.03em;
       }
 
       h3 {
@@ -219,8 +220,10 @@
       }
 
       .lede {
-        color: #403d36;
+        max-width: 39rem;
+        color: #344455;
         font-size: clamp(1.08rem, 2vw, 1.3rem);
+        line-height: 1.65;
       }
 
       .muted {
@@ -232,16 +235,21 @@
         align-items: center;
         justify-content: center;
         min-height: 46px;
-        padding: 0 18px;
-        border: 1px solid var(--ink);
-        border-radius: 8px;
-        background: var(--ink);
+        padding: 0 20px;
+        border: 1px solid rgba(23, 32, 42, 0.9);
+        border-radius: 999px;
+        background: linear-gradient(135deg, #10202d, #2f6e73);
         color: var(--paper);
+        font-weight: 620;
+        letter-spacing: 0.01em;
+        box-shadow: 0 12px 28px rgba(16, 32, 45, 0.14);
       }
 
       .button.secondary {
-        background: transparent;
+        background: rgba(255, 255, 255, 0.78);
         color: var(--ink);
+        border-color: rgba(216, 224, 234, 0.92);
+        box-shadow: none;
       }
 
       .actions {
@@ -255,9 +263,15 @@
       .doc-image {
         overflow: hidden;
         border: 1px solid var(--line);
-        border-radius: 8px;
-        background: var(--surface);
+        border-radius: 24px;
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(240, 245, 250, 0.92)),
+          var(--surface);
         box-shadow: var(--shadow);
+      }
+
+      .hero-image {
+        padding: 18px;
       }
 
       .hero-image img,
@@ -265,6 +279,7 @@
         display: block;
         width: 100%;
         height: auto;
+        border-radius: 16px;
       }
 
       .meta-grid {
@@ -278,13 +293,17 @@
       .card,
       .panel {
         border: 1px solid var(--line);
-        border-radius: 8px;
-        background: var(--surface);
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.88);
+        box-shadow: 0 12px 30px rgba(23, 32, 42, 0.06);
       }
 
       .stat {
         min-height: 122px;
-        padding: 18px;
+        padding: 20px;
+        background:
+          linear-gradient(180deg, rgba(var(--signal-rgb), 0.07), rgba(255, 255, 255, 0)),
+          rgba(255, 255, 255, 0.92);
       }
 
       .stat strong {
@@ -292,6 +311,7 @@
         margin-bottom: 6px;
         font-size: 2.1rem;
         line-height: 1;
+        color: var(--sage);
       }
 
       .stat span {
@@ -309,6 +329,8 @@
         gap: 30px;
         align-items: end;
         margin-bottom: 30px;
+        padding-top: 18px;
+        border-top: 1px solid rgba(216, 224, 234, 0.86);
       }
 
       .grid-2 {
@@ -325,13 +347,18 @@
 
       .card {
         min-height: 205px;
-        padding: 22px;
+        padding: 24px;
       }
 
       .card p,
       .panel p,
       li {
         color: var(--muted);
+      }
+
+      .card h3,
+      .panel h3 {
+        color: #163043;
       }
 
       .tag-row {
@@ -342,13 +369,13 @@
       }
 
       .tag {
-        padding: 6px 9px;
-        border: 1px solid var(--line);
+        padding: 7px 11px;
+        border: 1px solid rgba(127, 159, 203, 0.26);
         border-radius: 999px;
-        background: #fbfaf6;
-        color: #47433b;
+        background: rgba(127, 159, 203, 0.1);
+        color: #34546f;
         font-size: 0.82rem;
-        font-weight: 800;
+        font-weight: 700;
       }
 
       .process {
@@ -359,17 +386,20 @@
 
       .process div {
         min-height: 116px;
-        padding: 16px;
+        padding: 18px;
         border: 1px solid var(--line);
-        border-radius: 8px;
-        background: var(--surface);
+        border-radius: 18px;
+        background:
+          linear-gradient(180deg, rgba(var(--signal-rgb), 0.06), rgba(255, 255, 255, 0)),
+          rgba(255, 255, 255, 0.92);
       }
 
       .process span {
         display: block;
         margin-bottom: 9px;
-        color: var(--terra);
+        color: var(--sage);
         font-weight: 900;
+        letter-spacing: 0.06em;
       }
 
       .evidence {
@@ -403,7 +433,7 @@
         height: 10px;
         margin-top: 8px;
         border-radius: 50%;
-        background: var(--terra);
+        background: var(--sage);
       }
 
       .caption {
@@ -428,7 +458,9 @@
       }
 
       .quote-band {
-        background: var(--ink);
+        background:
+          radial-gradient(circle at 20% 20%, rgba(var(--signal-rgb), 0.22), transparent 18rem),
+          linear-gradient(135deg, #10202d, #1b2c3c 55%, #244d54);
         color: var(--paper);
       }
 
@@ -446,6 +478,24 @@
       footer {
         padding: 30px 0 42px;
         color: var(--muted);
+      }
+
+      .hero-note {
+        margin-top: 18px;
+        padding: 14px 16px;
+        border: 1px solid rgba(216, 224, 234, 0.92);
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.72);
+      }
+
+      .hero-note a {
+        color: var(--sage);
+        font-weight: 700;
+        text-decoration: none;
+      }
+
+      .hero-note a:hover {
+        text-decoration: underline;
       }
 
       @media (max-width: 920px) {
@@ -541,8 +591,8 @@
     <main>
       <header class="wrap case-hero">
         <div>
-          <p class="eyebrow">Graduation Project / Samsung SRI-Delhi</p>
-          <h1>Customer Experience +</h1>
+          <p class="eyebrow">Graduation Project / Samsung SRI-Delhi / GenAI Service UX</p>
+          <h1>CX+</h1>
           <p class="lede">
             A research-led UX project exploring how GenAI can simplify customer support
             for agents while improving the customer experience across fragmented service
@@ -552,7 +602,7 @@
             <a class="button" href="#solution">View solution</a>
             <a class="button secondary" href="index.html">Back to portfolio</a>
           </div>
-          <p class="muted" style="margin-top: 16px">
+          <p class="muted hero-note">
             To check out entire project
             <a href="Trishala%20Gosar%20GP%202024_ppt.pdf" target="_blank" rel="noopener noreferrer">
               click here
