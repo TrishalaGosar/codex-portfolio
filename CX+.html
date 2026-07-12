@@ -306,14 +306,34 @@
       }
 
       .hero-image {
-        min-height: 100%;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+      }
+
+      .hero-summary {
+        grid-column: 2;
+        margin-top: 18px;
+        padding: 18px 20px;
+        border: 2px dashed #2d8cff;
+        border-radius: 0;
+        background: rgba(45, 140, 255, 0.06);
+        color: #1e2c49;
+        box-shadow: 0 10px 22px rgba(45, 140, 255, 0.08);
+      }
+
+      .hero-summary p {
+        margin: 0;
+        font-size: 0.95rem;
+        line-height: 1.55;
       }
 
       .hero-image img,
       .doc-image img {
         display: block;
         width: 100%;
-        height: auto;
+        height: 100%;
+        object-fit: cover;
+        object-position: center top;
       }
 
       .placeholder-frame {
@@ -2333,60 +2353,6 @@
         color: var(--muted);
       }
 
-      .architecture-panel {
-        padding: 28px 30px;
-        border: 1px solid var(--line);
-        border-radius: 20px;
-        background: rgba(255, 255, 255, 0.95);
-        box-shadow: 0 12px 26px rgba(24, 23, 19, 0.04);
-      }
-
-      .architecture-root {
-        display: inline-flex;
-        align-items: center;
-        min-height: 46px;
-        padding: 0 18px;
-        border: 1px solid rgba(83, 117, 104, 0.18);
-        border-radius: 999px;
-        background: rgba(83, 117, 104, 0.08);
-        color: var(--ink);
-        font-weight: 700;
-      }
-
-      .architecture-tree {
-        margin-top: 22px;
-        padding-left: 18px;
-        border-left: 1px solid rgba(222, 217, 204, 0.92);
-      }
-
-      .architecture-branches {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 12px 16px;
-        margin: 0;
-        padding: 0;
-        list-style: none;
-      }
-
-      .architecture-branches li {
-        position: relative;
-        padding: 16px 16px 16px 24px;
-        border: 1px solid rgba(24, 23, 19, 0.08);
-        border-radius: 16px;
-        background: #fff;
-        color: var(--ink);
-      }
-
-      .architecture-branches li::before {
-        content: "├──";
-        position: absolute;
-        left: 12px;
-        top: 15px;
-        color: var(--muted);
-        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-        font-size: 0.82rem;
-      }
-
       .philosophy-panel {
         padding: 30px 32px;
         border: 1px solid var(--line);
@@ -2523,6 +2489,18 @@
         align-items: start;
       }
 
+      .evidence.full-width {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .full-width-image {
+        width: 100%;
+      }
+
+      .no-wrap {
+        white-space: nowrap;
+      }
+
       .panel {
         padding: 24px;
       }
@@ -2599,6 +2577,10 @@
           left: 14px;
         }
 
+        .hero-summary {
+          grid-column: auto;
+        }
+
         .case-hero,
         .challenge-intro,
         .section-head,
@@ -2636,8 +2618,7 @@
         }
 
         .showcase-shell,
-        .core-features-grid,
-        .architecture-branches {
+        .core-features-grid {
           grid-template-columns: repeat(2, minmax(0, 1fr));
         }
 
@@ -2853,7 +2834,6 @@
         .insight-synthesis,
         .research-outcome,
         .direction-panel,
-        .architecture-panel,
         .philosophy-panel {
           padding: 22px;
         }
@@ -2923,57 +2903,15 @@
             </p>
           </div>
         </div>
-        <figure class="placeholder-frame">
-          <div
-            class="placeholder-window"
-            role="img"
-            aria-label="AI-Assisted Customer Support Platform mockup with Unified Customer Workspace, AI Recommendations, and Omnichannel Timeline annotations."
-          >
-            <div class="placeholder-topbar" aria-hidden="true">
-              <span class="placeholder-dot"></span>
-              <span class="placeholder-dot"></span>
-              <span class="placeholder-dot"></span>
-            </div>
-            <div class="placeholder-body">
-              <span class="placeholder-label">AI-Assisted Customer Support Platform</span>
-              <div class="placeholder-ui" aria-hidden="true">
-                <div class="placeholder-sidebar">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                </div>
-                <div class="placeholder-main">
-                  <div class="placeholder-panel">
-                    <span style="width: 34%; height: 14px"></span>
-                    <span style="width: 72%; height: 14px"></span>
-                    <span style="width: 58%; height: 14px"></span>
-                  </div>
-                  <div class="placeholder-strip">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                  </div>
-                  <div class="placeholder-grid">
-                    <div class="placeholder-card">
-                      <span></span>
-                      <span style="width: 84%; margin-top: 12px"></span>
-                      <span style="width: 62%; margin-top: 12px"></span>
-                    </div>
-                    <div class="placeholder-log">
-                      <span></span>
-                      <span style="width: 88%; margin-top: 12px"></span>
-                      <span style="width: 74%; margin-top: 12px"></span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <span class="annotation context">Unified Customer Workspace</span>
-              <span class="annotation recommendations">AI Recommendations</span>
-              <span class="annotation history">Omnichannel Timeline</span>
-            </div>
-          </div>
+        <figure class="hero-image">
+          <img
+            src="assets/final-concept.png"
+            alt="Final concept mockup for Customer Experience +."
+            loading="lazy"
+          />
+          <figcaption class="caption">
+            Final concept mockup for Customer Experience +.
+          </figcaption>
         </figure>
       </section>
 
@@ -3021,7 +2959,6 @@
                 <ul class="snapshot-list">
                   <li>UX Strategy</li>
                   <li>AI Experience Design</li>
-                  <li>Information Architecture</li>
                   <li>Wireframes</li>
                   <li>High-Fidelity Prototype</li>
                 </ul>
@@ -3310,6 +3247,23 @@
           </p>
         </div>
         <div class="insights-summary">
+          <div class="approach-block">
+            <h3>Existing journey</h3>
+            <figure class="doc-image">
+              <img
+                src="assets/existing flow.png"
+                alt="Existing workflow diagram for customer support agents."
+                loading="lazy"
+              />
+            </figure>
+            <figure class="doc-image">
+              <img
+                src="assets/Journey.jpg"
+                alt="Journey diagram for customer support workflow."
+                loading="lazy"
+              />
+            </figure>
+          </div>
           <div class="approach-block">
             <h3>What We Observed</h3>
             <div class="insights-grid">
@@ -3629,62 +3583,13 @@
           </p>
         </div>
 
-        <div class="solution-showcase">
-          <div
-            class="showcase-window"
-            aria-label="AI-Assisted Customer Support Platform placeholder with unified customer context, AI-powered assistance, and omnichannel timeline."
-          >
-            <div class="showcase-topbar" aria-hidden="true">
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
-            <div class="showcase-body">
-              <span class="showcase-label">AI-Assisted Customer Support Platform</span>
-              <div class="showcase-shell" aria-hidden="true">
-                <div class="showcase-rail">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                </div>
-                <div class="showcase-main">
-                  <div class="showcase-panel">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                  </div>
-                  <div class="showcase-module">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                  </div>
-                </div>
-                <div class="showcase-side">
-                  <div class="showcase-stack">
-                    <article>
-                      <span></span>
-                      <span></span>
-                      <span></span>
-                    </article>
-                    <article>
-                      <span></span>
-                      <span></span>
-                      <span></span>
-                    </article>
-                  </div>
-                  <div class="showcase-timeline">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <figure class="doc-image solution-final-image">
+            <img
+              src="assets/final-concept.png"
+              alt="Final concept mockup for Customer Experience +."
+              loading="lazy"
+            />
+          </figure>
 
           <div class="showcase-notes">
             <article class="solution-note">
@@ -3704,106 +3609,6 @@
                 Consolidates customer interactions across calls, chat, email and
                 service requests.
               </p>
-            </article>
-          </div>
-        </div>
-
-        <div class="approach-block">
-          <h3>How the Experience Works</h3>
-          <div class="experience-journey">
-            <article class="journey-node">
-              <span class="journey-node-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <path d="M5 18v-7a7 7 0 0 1 14 0v7" />
-                  <path d="M5 14h3v5H5z" />
-                  <path d="M16 14h3v5h-3z" />
-                </svg>
-              </span>
-              <span>Customer contacts support</span>
-            </article>
-            <div class="journey-connector" aria-hidden="true">
-              <svg viewBox="0 0 24 24">
-                <path d="M5 12h14" />
-                <path d="m13 7 6 5-6 5" />
-              </svg>
-            </div>
-            <article class="journey-node">
-              <span class="journey-node-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <path d="M4 19h16" />
-                  <path d="M7 16V8" />
-                  <path d="M12 16V5" />
-                  <path d="M17 16v-4" />
-                </svg>
-              </span>
-              <span>Customer context is retrieved</span>
-            </article>
-            <div class="journey-connector" aria-hidden="true">
-              <svg viewBox="0 0 24 24">
-                <path d="M5 12h14" />
-                <path d="m13 7 6 5-6 5" />
-              </svg>
-            </div>
-            <article class="journey-node">
-              <span class="journey-node-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <path d="M12 3v4" />
-                  <path d="M12 17v4" />
-                  <path d="M4.93 4.93 7.76 7.76" />
-                  <path d="m16.24 16.24 2.83 2.83" />
-                  <path d="M3 12h4" />
-                  <path d="M17 12h4" />
-                  <circle cx="12" cy="12" r="4" />
-                </svg>
-              </span>
-              <span>AI understands the conversation</span>
-            </article>
-            <div class="journey-connector" aria-hidden="true">
-              <svg viewBox="0 0 24 24">
-                <path d="M5 12h14" />
-                <path d="m13 7 6 5-6 5" />
-              </svg>
-            </div>
-            <article class="journey-node">
-              <span class="journey-node-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <circle cx="10" cy="10" r="5" />
-                  <path d="m14 14 6 6" />
-                </svg>
-              </span>
-              <span>Relevant knowledge is surfaced</span>
-            </article>
-            <div class="journey-connector" aria-hidden="true">
-              <svg viewBox="0 0 24 24">
-                <path d="M5 12h14" />
-                <path d="m13 7 6 5-6 5" />
-              </svg>
-            </div>
-            <article class="journey-node">
-              <span class="journey-node-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <path d="m5 15 4-4 3 3 7-7" />
-                  <path d="M15 7h4v4" />
-                </svg>
-              </span>
-              <span>Agent resolves the issue</span>
-            </article>
-            <div class="journey-connector" aria-hidden="true">
-              <svg viewBox="0 0 24 24">
-                <path d="M5 12h14" />
-                <path d="m13 7 6 5-6 5" />
-              </svg>
-            </div>
-            <article class="journey-node">
-              <span class="journey-node-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <path d="M7 4h7l5 5v11H7z" />
-                  <path d="M14 4v5h5" />
-                  <path d="M10 13h4" />
-                  <path d="M10 17h4" />
-                </svg>
-              </span>
-              <span>AI summarizes and updates records</span>
             </article>
           </div>
         </div>
@@ -3890,23 +3695,6 @@
           </div>
         </div>
 
-        <div class="approach-block">
-          <h3>Information Architecture</h3>
-          <div class="architecture-panel">
-            <div class="architecture-root">Customer Profile</div>
-            <div class="architecture-tree">
-              <ul class="architecture-branches">
-                <li>Products</li>
-                <li>Tickets</li>
-                <li>History</li>
-                <li>Communication</li>
-                <li>AI Assistant</li>
-                <li>Quick Actions</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
         <aside class="philosophy-panel" aria-label="Design philosophy">
           <h3>Design Philosophy</h3>
           <p>
@@ -3919,47 +3707,6 @@
 
         <div class="section-divider" aria-hidden="true"></div>
         <div class="section-next">Next... Exploring the Product Experience</div>
-      </section>
-
-      <section id="product-experience" class="wrap">
-        <div class="section-head">
-          <h2>COSS</h2>
-          <p class="lede">
-            Customer One Stop Solution is an integrated workspace that brings scattered
-            support functions into one agent-facing product and uses GenAI to make
-            communication easier, faster, and more accurate.
-          </p>
-        </div>
-        <div class="grid-2">
-          <div class="panel">
-            <h3>Core product decisions</h3>
-            <ul class="list">
-              <li>One workspace window instead of a cluster of separate apps.</li>
-              <li>Speech-to-text and voice analysis to identify issue context, tone, pace, pitch, and satisfaction signals.</li>
-              <li>Auto-generated call summaries, tags, timeline updates, and form fields that agents can confirm or adjust.</li>
-              <li>Consolidated profile, product, ticket, history, recommendations, and action panels.</li>
-              <li>Progressive disclosure so deeper product or ticket details open only when needed.</li>
-            </ul>
-          </div>
-          <figure class="doc-image">
-            <img
-              src="assets/gp-information-architecture.png"
-              alt="Information architecture for dashboard, profile, product, ticket, action panel, and call quality metrics."
-            />
-          </figure>
-        </div>
-        <div class="image-stack">
-          <figure class="doc-image">
-            <img
-              src="assets/generative-ai-coss-case.png"
-              alt="Polished COSS agent workspace showing profile, tickets, AI recommendations, consolidated history, prompt input, and workspace actions."
-            />
-            <figcaption class="caption">
-              Refined COSS workspace mockup showing how the agent begins with profile,
-              ticket, recommendation, history, and action context in one view.
-            </figcaption>
-          </figure>
-        </div>
       </section>
 
       <section class="wrap">
@@ -4015,21 +3762,11 @@
           <figure class="doc-image">
             <img
               src="assets/coss-ai-autofill-flow.png"
-              alt="Five-step COSS AI assist flow from listening to identifying, summarizing, recommending, and confirming."
+              alt="Five-step AI assist flow from listening to identifying, summarizing, recommending, and confirming."
             />
             <figcaption class="caption">
               Functioning view: live speech and existing records become editable
               summaries, recommended actions, and agent-confirmed responses.
-            </figcaption>
-          </figure>
-          <figure class="doc-image">
-            <img
-              src="assets/coss-omnichannel-functioning.png"
-              alt="COSS omnichannel flow connecting call, WhatsApp, email, chatbot, website, and service-centre signals into one timeline and starting context."
-            />
-            <figcaption class="caption">
-              Functioning view: support signals from multiple channels are consolidated
-              into a timeline and prioritized starting context for the agent.
             </figcaption>
           </figure>
         </div>
@@ -4043,8 +3780,8 @@
             time, number of apps, clicks, onboarding, manual typing, and agent staffing.
           </p>
         </div>
-        <div class="evidence">
-          <figure class="doc-image">
+        <div class="evidence full-width">
+          <figure class="doc-image full-width-image">
             <img
               src="assets/gp-roi-assessment.png"
               alt="ROI assessment slide comparing as-is and to-be support experience factors."

@@ -161,7 +161,7 @@
         margin-bottom: 20px;
         font-family: Georgia, "Times New Roman", serif;
         font-size: clamp(2.6rem, 5.9vw, 5.2rem);
-        font-weight: 500;
+        font-weight: 700;
         line-height: 1;
         letter-spacing: 0;
       }
@@ -376,7 +376,7 @@
         margin-bottom: 0;
         font-family: Georgia, "Times New Roman", serif;
         font-size: clamp(2rem, 4vw, 3.5rem);
-        font-weight: 500;
+        font-weight: 700;
         line-height: 1;
       }
 
@@ -395,51 +395,52 @@
 
       .skills-grid {
         display: grid;
-        gap: 24px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
       }
 
       .skill-row {
         display: grid;
-        gap: 8px;
+        gap: 14px;
+        padding: 22px 22px 14px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--surface);
+        box-shadow: 0 8px 24px rgba(24, 23, 19, 0.05);
       }
 
       .skill-type {
         margin: 0;
-        color: var(--terra);
+        color: var(--ink);
         font-family: Georgia, "Times New Roman", serif;
-        font-size: 1.42rem;
-        font-weight: 500;
-        line-height: 1.2;
+        font-size: 1.72rem;
+        font-weight: 700;
+        line-height: 1.08;
       }
 
-      .skill-line {
-        margin: 0;
+      .skill-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        padding-bottom: 2px;
+      }
+
+      .skill-tag {
+        padding: 8px 12px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: #fbfaf6;
         color: #2f3d46;
-        font-size: 1.14rem;
-        line-height: 1.62;
+        font-size: 0.95rem;
+        font-weight: 600;
+        line-height: 1.2;
       }
 
       .projects-rail {
         display: flex;
         gap: 18px;
-        overflow-x: auto;
-        padding: 6px 4px 12px;
-        scroll-snap-type: x proximity;
-        scrollbar-width: thin;
-        scrollbar-color: rgba(var(--orchid-rgb), 0.35) transparent;
-      }
-
-      .projects-rail::-webkit-scrollbar {
-        height: 10px;
-      }
-
-      .projects-rail::-webkit-scrollbar-thumb {
-        border-radius: 999px;
-        background: rgba(var(--orchid-rgb), 0.28);
-      }
-
-      .projects-rail::-webkit-scrollbar-track {
-        background: transparent;
+        overflow: hidden;
+        padding: 6px 0 12px;
       }
 
       .card {
@@ -454,7 +455,7 @@
       .card h3 {
         margin-bottom: 10px;
         font-size: 1rem;
-        font-weight: 650;
+        font-weight: 750;
       }
 
       .card p {
@@ -534,7 +535,7 @@
         margin: 0;
         font-family: Georgia, "Times New Roman", serif;
         font-size: clamp(1.45rem, 2.2vw, 2.15rem);
-        font-weight: 500;
+        font-weight: 700;
         line-height: 1.04;
       }
 
@@ -870,7 +871,7 @@
         }
 
         .skill-row {
-          gap: 8px;
+          padding: 18px;
         }
 
         .timeline-item {
@@ -954,7 +955,7 @@
             <p class="hero-copy">
               I design clear, user-centered product experiences by transforming complex
               requirements into scalable solutions across GenAI, smart devices,
-              enterprise tools, and interactive systems.
+              digital tools, and interactive systems.
             </p>
             <div class="hero-actions">
               <a
@@ -982,7 +983,7 @@
                 <span class="metric sage">UX Design</span>
                 <span class="metric terra">GenAI</span>
                 <span class="metric gold">Smart Devices</span>
-                <span class="metric sky">Enterprise Tools</span>
+                <span class="metric sky">Digital Tools</span>
                 <span class="metric sage">Interactive Systems</span>
                 <span class="metric terra">Research</span>
                 <span class="metric gold">Game Design</span>
@@ -998,16 +999,21 @@
           </div>
           <div class="skills-grid">
             <div class="skill-row">
-              <h3 class="skill-type">Design Skills</h3>
-              <p class="skill-line">
-                User Research • Wireframing &amp; Prototyping • Interaction Design •
-                Information Architecture • Usability Testing • Design Systems •
-                Workflow Design • Strategy &amp; Problem Solving • Gamification for
-                Design
-              </p>
+              <h3 class="skill-type">✦ Design Skills</h3>
+              <div class="skill-tags" aria-label="Design skills">
+                <span class="skill-tag">User Research</span>
+                <span class="skill-tag">Wireframing &amp; Prototyping</span>
+                <span class="skill-tag">Interaction Design</span>
+                <span class="skill-tag">Information Architecture</span>
+                <span class="skill-tag">Usability Testing</span>
+                <span class="skill-tag">Design Systems</span>
+                <span class="skill-tag">Workflow Design</span>
+                <span class="skill-tag">Strategy &amp; Problem Solving</span>
+                <span class="skill-tag">Gamification for Design</span>
+              </div>
             </div>
             <div class="skill-row">
-              <h3 class="skill-type">Software And Tech</h3>
+              <h3 class="skill-type">⚙ Software And Tech</h3>
               <p class="skill-line">
                 Figma • Axure • Adobe Suite • VS Code • Cline AI • Unity • HTML5*
                 &amp; CSS* • Jira • Confluence
@@ -1023,7 +1029,7 @@
           <div class="section-head">
             <h2>Projects</h2>
             <p>
-              A scrollable set of portfolio projects across enterprise AI, interaction,
+              A scrollable set of portfolio projects across AI, interaction,
               and concept-led product design.
             </p>
           </div>
@@ -1032,10 +1038,10 @@
               <a class="project-link" href="CX+.html">
                 <div class="project-thumb">
                   <img
-                    src="assets/generative-ai-coss-case.png"
+                    src="assets/UI Design Request.png"
                     alt="Customer Experience Plus project dashboard concept."
                   />
-                  <span class="project-badge">Enterprise AI</span>
+                  <span class="project-badge">AI Product</span>
                 </div>
                 <div class="project-body">
                   <h3>CX+</h3>
@@ -1046,7 +1052,7 @@
                   <div class="project-meta">
                     <span>Research</span>
                     <span>Journey mapping</span>
-                    <span>Enterprise UX</span>
+                    <span>Service UX</span>
                   </div>
                   <span class="project-footer">
                     Open project
@@ -1120,15 +1126,15 @@
                   <h3>AI Assistant for Education</h3>
                   <p>
                     A dedicated project page for an AI learning assistant concept with a
-                    responsive embedded video showcase built directly into the portfolio.
+                    responsive embedded video showcase. Coming soon.
                   </p>
                   <div class="project-meta">
                     <span>AI UX</span>
                     <span>Education</span>
-                    <span>Video embed</span>
+                    <span>Soon updated</span>
                   </div>
                   <span class="project-footer">
-                    Open project
+                    Coming soon
                     <svg aria-hidden="true" viewBox="0 0 24 24">
                       <path d="M7 17 17 7" />
                       <path d="M7 7h10v10" />
@@ -1142,40 +1148,21 @@
                 <div
                   class="project-thumb"
                   style="
-                    background:
-                      radial-gradient(circle at 18% 22%, rgba(179, 92, 62, 0.2), transparent 5rem),
-                      radial-gradient(circle at 78% 18%, rgba(215, 169, 72, 0.28), transparent 6rem),
-                      linear-gradient(135deg, #f3ecde, #fff);
+                    background: #f3ecde;
                   "
                 >
-                  <div class="case-visual" aria-hidden="true">
-                    <div class="screen">
-                      <div
-                        class="mini-grid"
-                        style="grid-template-columns: 1.2fr 0.8fr; grid-auto-rows: 88px"
-                      >
-                        <div
-                          class="tile"
-                          style="
-                            background:
-                              linear-gradient(135deg, rgba(83, 117, 104, 0.68), rgba(124, 167, 184, 0.68));
-                          "
-                        ></div>
-                        <div class="tile" style="background: rgba(179, 92, 62, 0.34)"></div>
-                        <div class="tile" style="background: rgba(215, 169, 72, 0.4)"></div>
-                        <div class="tile" style="background: rgba(83, 117, 104, 0.24)"></div>
-                      </div>
-                      <div class="bar" style="width: 46%; background: var(--terra)"></div>
-                      <div class="line" style="width: 76%"></div>
-                    </div>
-                  </div>
+                  <img
+                    src="assets/Art Galore.png"
+                    alt="Art Galore final screen concept."
+                  />
                   <span class="project-badge">Concept</span>
                 </div>
                 <div class="project-body">
                   <h3>Art Galore</h3>
                   <p>
-                    An art-browsing concept page with a live wireframe embed and a
-                    dedicated case-study structure for the full design narrative.
+                    Art Galore is a conceptual partner portal designed to help
+                    galleries, art organisations, and content partners publish artwork
+                    across smart TVs and digital display platforms.
                   </p>
                   <div class="project-meta">
                     <span>Wireframe</span>
@@ -1339,8 +1326,6 @@
       const message = document.querySelector("#gameMessage");
       const contactActions = document.querySelector("#contactActions");
       const startButtonLabel = document.querySelector("#startContactGameLabel");
-      const projectsRail = document.querySelector("#projectsRail");
-
       let gameTimer;
       let targetTimer;
       let secondsLeft = 10;
@@ -1431,17 +1416,7 @@
 
       startButton.addEventListener("click", startGame);
 
-      if (projectsRail) {
-        projectsRail.addEventListener(
-          "wheel",
-          (event) => {
-            if (Math.abs(event.deltaY) <= Math.abs(event.deltaX)) return;
-            projectsRail.scrollLeft += event.deltaY;
-            event.preventDefault();
-          },
-          { passive: false },
-        );
-      }
+      // Horizontal project rail scrolling disabled for now.
     </script>
   </body>
 </html>
