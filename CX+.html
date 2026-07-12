@@ -178,7 +178,7 @@
 
       .eyebrow {
         margin: 0 0 14px;
-        color: var(--terra);
+        color: #2d8cff;
         font-size: 0.8rem;
         font-weight: 800;
         letter-spacing: 0.12em;
@@ -225,7 +225,7 @@
 
       .hero-copy {
         display: grid;
-        gap: 24px;
+        gap: 18px;
         align-content: start;
       }
 
@@ -258,7 +258,7 @@
 
       .intro-section-title {
         margin: 0;
-        color: var(--sage);
+        color: #2d8cff;
         font-family:
           Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
           sans-serif;
@@ -506,21 +506,33 @@
       .snapshot-grid {
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 16px;
+        gap: 0;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.94);
+        box-shadow: 0 10px 22px rgba(24, 23, 19, 0.04);
       }
 
       .snapshot-item {
         margin: 0;
         min-height: 100%;
         padding: 18px 18px 20px;
-        border: 1px solid var(--line);
-        border-radius: 16px;
-        background: rgba(255, 255, 255, 0.94);
-        box-shadow: 0 10px 22px rgba(24, 23, 19, 0.04);
+        background: transparent;
+        border-right: 1px solid rgba(222, 217, 204, 0.88);
+        border-bottom: 1px solid rgba(222, 217, 204, 0.88);
+      }
+
+      .snapshot-item:nth-child(3n) {
+        border-right: 0;
+      }
+
+      .snapshot-item:nth-last-child(-n + 3) {
+        border-bottom: 0;
       }
 
       .snapshot-item dt {
-        color: var(--muted);
+        color: #2d8cff;
         font-size: 0.78rem;
         font-weight: 700;
         letter-spacing: 0.12em;
@@ -534,14 +546,31 @@
         line-height: 1.65;
       }
 
-      .snapshot-item dd span {
-        display: block;
+      .snapshot-list {
+        display: grid;
+        gap: 8px;
+        margin: 8px 0 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .snapshot-list li {
+        display: grid;
+        grid-template-columns: 12px 1fr;
+        gap: 8px;
+        color: var(--ink);
+      }
+
+      .snapshot-list li::before {
+        content: "-";
+        color: rgba(45, 140, 255, 0.72);
+        font-weight: 700;
       }
 
       .contribution-block {
-        grid-template-columns: minmax(220px, 0.34fr) minmax(0, 0.66fr);
+        grid-template-columns: 1fr;
         align-items: start;
-        gap: 30px;
+        gap: 14px;
         padding-top: 8px;
       }
 
@@ -555,27 +584,43 @@
 
       .contribution-list li {
         display: grid;
-        grid-template-columns: 18px 1fr;
-        gap: 12px;
-        color: var(--ink);
+        grid-template-columns: 14px 1fr;
+        gap: 10px;
+        color: #2f3d46;
+        line-height: 1.6;
       }
 
       .contribution-list li::before {
         content: "";
-        width: 8px;
-        height: 8px;
-        margin-top: 9px;
+        width: 6px;
+        height: 6px;
+        margin-top: 10px;
         border-radius: 50%;
-        background: var(--sage);
+        background: rgba(83, 117, 104, 0.56);
       }
 
       .outcome-callout {
+        position: relative;
         padding: 30px 32px;
-        border: 1px solid var(--line);
-        border-left: 4px solid var(--sage);
-        border-radius: 18px;
-        background: rgba(255, 255, 255, 0.92);
+        border: 2px dashed #2d8cff;
+        border-radius: 0;
+        background: rgba(45, 140, 255, 0.04);
         box-shadow: 0 12px 26px rgba(24, 23, 19, 0.05);
+      }
+
+      .outcome-callout::before,
+      .direction-panel::before {
+        content: none;
+      }
+
+      .outcome-kicker {
+        display: inline-flex;
+        margin-bottom: 12px;
+        color: #2d8cff;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: clamp(1.5rem, 2vw, 2rem);
+        font-weight: 700;
+        line-height: 1.05;
       }
 
       .outcome-callout p {
@@ -586,19 +631,170 @@
         line-height: 1.6;
       }
 
+      .brief-spark {
+        position: absolute;
+        aspect-ratio: 1;
+        background: #2d8cff;
+        clip-path: polygon(
+          50% 0%,
+          63% 37%,
+          100% 50%,
+          63% 63%,
+          50% 100%,
+          37% 63%,
+          0% 50%,
+          37% 37%
+        );
+        box-shadow: 0 16px 30px rgba(45, 140, 255, 0.34);
+      }
+
+      .brief-spark::after {
+        content: "";
+        position: absolute;
+        inset: 7px;
+        background: #c6dfff;
+        clip-path: inherit;
+      }
+
+      .brief-spark.primary {
+        top: -24px;
+        right: -22px;
+        width: 42px;
+        animation: sparkDance 2.2s cubic-bezier(0.37, 0, 0.24, 1) infinite;
+      }
+
+      .brief-spark.secondary {
+        top: 10px;
+        right: 18px;
+        width: 24px;
+        animation: sparkOrbit 1.9s ease-in-out infinite;
+        animation-delay: 0.28s;
+      }
+
+      @keyframes sparkDance {
+        0%,
+        100% {
+          transform: translate3d(0, 0, 0) scale(0.9) rotate(0deg);
+        }
+
+        25% {
+          transform: translate3d(-2px, -6px, 0) scale(1.1) rotate(8deg);
+        }
+
+        50% {
+          transform: translate3d(2px, -10px, 0) scale(1.24) rotate(-7deg);
+        }
+
+        75% {
+          transform: translate3d(-3px, -4px, 0) scale(1.02) rotate(6deg);
+        }
+      }
+
+      @keyframes sparkOrbit {
+        0%,
+        100% {
+          transform: translate3d(0, 0, 0) scale(0.92) rotate(0deg);
+          opacity: 0.86;
+        }
+
+        50% {
+          transform: translate3d(5px, -7px, 0) scale(1.22) rotate(12deg);
+          opacity: 1;
+        }
+      }
+
+      @keyframes keyBob {
+        0%,
+        100% {
+          transform: translate3d(0, 0, 0) rotate(-10deg) scale(0.96);
+        }
+
+        35% {
+          transform: translate3d(3px, -8px, 0) rotate(-2deg) scale(1.08);
+        }
+
+        65% {
+          transform: translate3d(-2px, -4px, 0) rotate(-16deg) scale(1.02);
+        }
+      }
+
       .challenge-chapter {
         display: grid;
         gap: 32px;
       }
 
       .challenge-head {
+        grid-template-columns: minmax(360px, 0.92fr) minmax(420px, 1.08fr);
+        gap: 42px;
+        align-items: start;
         margin-bottom: 0;
+      }
+
+      .challenge-head > div:first-child {
+        display: grid;
+        gap: 12px;
+        align-content: start;
+      }
+
+      .challenge-head .eyebrow {
+        margin-bottom: 0;
+        transform: translateY(-4px);
       }
 
       .challenge-copy {
         display: grid;
         gap: 16px;
-        max-width: 72ch;
+        min-width: 0;
+        max-width: 70ch;
+      }
+
+      .challenge-status {
+        display: grid;
+        gap: 12px;
+        margin: 0;
+      }
+
+      .challenge-status span {
+        display: inline-grid;
+        grid-template-columns: 34px 1fr;
+        align-items: center;
+        column-gap: 14px;
+        color: var(--ink);
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: clamp(2rem, 4vw, 3.6rem);
+        font-weight: 700;
+        line-height: 1;
+      }
+
+      .challenge-status span::before {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        font-size: 0.84rem;
+        font-weight: 760;
+      }
+
+      .challenge-status .status-ok::before {
+        content: "✓";
+        color: #fff;
+        background: var(--sage);
+      }
+
+      .challenge-status .status-no::before {
+        content: "✕";
+        color: #fff;
+        background: rgba(179, 92, 62, 0.9);
+      }
+
+      .challenge-kicker {
+        margin: 0;
+        color: var(--ink);
+        font-size: clamp(1.18rem, 2vw, 1.42rem);
+        font-weight: 760;
+        line-height: 1.4;
       }
 
       .challenge-copy p {
@@ -607,8 +803,8 @@
 
       .challenge-intro {
         display: grid;
-        grid-template-columns: minmax(0, 0.9fr) minmax(320px, 1.1fr);
-        gap: 28px;
+        grid-template-columns: 1fr;
+        gap: 0;
         align-items: start;
       }
 
@@ -711,6 +907,24 @@
       .goal-card {
         min-height: 100%;
         padding: 24px;
+        border: 2px dashed rgba(24, 23, 19, 0.14);
+        background: rgba(255, 255, 255, 0.92);
+        box-shadow: 0 10px 24px rgba(24, 23, 19, 0.04);
+      }
+
+      .goal-card.goal-cognitive {
+        border-color: rgba(83, 117, 104, 0.52);
+        background: rgba(83, 117, 104, 0.08);
+      }
+
+      .goal-card.goal-unify {
+        border-color: rgba(215, 169, 72, 0.58);
+        background: rgba(215, 169, 72, 0.12);
+      }
+
+      .goal-card.goal-assist {
+        border-color: rgba(124, 167, 184, 0.56);
+        background: rgba(124, 167, 184, 0.12);
       }
 
       .goal-card h3 {
@@ -760,7 +974,8 @@
 
       .ecosystem-block {
         display: grid;
-        gap: 34px;
+        gap: 20px;
+        padding-top: 14px;
       }
 
       .ecosystem-diagram,
@@ -776,6 +991,25 @@
         display: grid;
         gap: 20px;
         padding: 26px;
+      }
+
+      .ecosystem-image-card {
+        display: grid;
+        align-items: center;
+        min-height: 320px;
+        margin: 0 0 14px;
+        padding: 20px;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.94);
+        box-shadow: 0 12px 26px rgba(24, 23, 19, 0.04);
+      }
+
+      .ecosystem-image-card img {
+        display: block;
+        width: 100%;
+        height: 280px;
+        object-fit: contain;
       }
 
       .ecosystem-flow {
@@ -839,6 +1073,81 @@
       .systems-block {
         display: grid;
         gap: 20px;
+      }
+
+      .systems-figure {
+        display: grid;
+        gap: 14px;
+        margin: 0;
+      }
+
+      .systems-figure-shell {
+        position: relative;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        background: rgba(255, 255, 255, 0.96);
+        box-shadow: 0 12px 26px rgba(24, 23, 19, 0.04);
+      }
+
+      .systems-figure img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+
+      .viewer-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 42px;
+        padding: 0 16px;
+        border: 1px solid rgba(83, 117, 104, 0.28);
+        border-radius: 999px;
+        background: rgba(83, 117, 104, 0.08);
+        color: var(--sage);
+        font: inherit;
+        font-weight: 700;
+        cursor: pointer;
+        transition:
+          transform 180ms ease,
+          background-color 180ms ease,
+          border-color 180ms ease;
+      }
+
+      .viewer-button:hover,
+      .viewer-button:focus-visible {
+        border-color: rgba(83, 117, 104, 0.42);
+        background: rgba(83, 117, 104, 0.12);
+        transform: translateY(-1px);
+      }
+
+      .viewer-button:focus-visible {
+        outline: 2px solid rgba(83, 117, 104, 0.22);
+        outline-offset: 3px;
+      }
+
+      .viewer-button.icon-button {
+        position: absolute;
+        top: 14px;
+        left: 14px;
+        z-index: 1;
+        width: 44px;
+        min-height: 44px;
+        padding: 0;
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.88);
+        backdrop-filter: blur(10px);
+      }
+
+      .viewer-button.icon-button svg {
+        width: 18px;
+        height: 18px;
+        stroke: currentColor;
+        stroke-width: 1.9;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        fill: none;
       }
 
       .systems-grid {
@@ -911,8 +1220,21 @@
       }
 
       .insight-panel {
+        position: relative;
         padding: 30px 32px;
-        border-left: 4px solid var(--sage);
+        border: 2px dashed rgba(83, 117, 104, 0.56);
+        background: rgba(83, 117, 104, 0.05);
+      }
+
+      .insight-panel::before {
+        content: "🔑";
+        position: absolute;
+        top: -28px;
+        left: -20px;
+        font-size: 2.25rem;
+        line-height: 1;
+        filter: drop-shadow(0 8px 16px rgba(24, 23, 19, 0.12));
+        animation: keyBob 2.5s ease-in-out infinite;
       }
 
       .insight-panel h3 {
@@ -930,13 +1252,54 @@
         line-height: 1.7;
       }
 
+      .diagram-lightbox {
+        position: fixed;
+        inset: 0;
+        z-index: 30;
+        display: grid;
+        place-items: center;
+        padding: 28px;
+        background: rgba(24, 23, 19, 0.76);
+        backdrop-filter: blur(10px);
+      }
+
+      .diagram-lightbox[hidden] {
+        display: none;
+      }
+
+      .diagram-lightbox-panel {
+        display: grid;
+        gap: 18px;
+        width: min(1320px, 100%);
+      }
+
+      .diagram-lightbox-actions {
+        display: flex;
+        justify-content: flex-end;
+      }
+
+      .diagram-lightbox-frame {
+        overflow: auto;
+        max-height: calc(100vh - 120px);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        border-radius: 24px;
+        background: #fff;
+        box-shadow: 0 28px 60px rgba(0, 0, 0, 0.28);
+      }
+
+      .diagram-lightbox-frame img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+
       .section-next {
         display: inline-flex;
         align-items: center;
-        margin-top: 18px;
-        color: var(--muted);
+        margin-top: 14px;
+        color: #2d8cff;
         font-size: 0.92rem;
-        font-weight: 620;
+        font-weight: 700;
         letter-spacing: 0.04em;
       }
 
@@ -971,7 +1334,7 @@
       }
 
       .research-intro {
-        max-width: 72ch;
+        max-width: none;
       }
 
       .research-intro p {
@@ -988,6 +1351,20 @@
 
       .approach-heading {
         margin-bottom: 0;
+      }
+
+      .approach-visual {
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.96);
+        box-shadow: 0 12px 26px rgba(24, 23, 19, 0.04);
+      }
+
+      .approach-visual img {
+        display: block;
+        width: 100%;
+        height: auto;
       }
 
       .approach-flow {
@@ -1108,14 +1485,17 @@
       }
 
       .methods-list li {
-        display: inline-flex;
-        align-items: center;
-        min-height: 38px;
-        padding: 0 12px;
-        border: 1px solid rgba(24, 23, 19, 0.08);
-        border-radius: 999px;
+        display: grid;
+        grid-template-columns: 12px 1fr;
+        gap: 8px;
         color: var(--ink);
-        background: #fbfaf6;
+        line-height: 1.5;
+      }
+
+      .methods-list li::before {
+        content: "-";
+        color: #2d8cff;
+        font-weight: 700;
       }
 
       .focus-grid,
@@ -1128,14 +1508,72 @@
         grid-template-columns: repeat(4, minmax(0, 1fr));
       }
 
-      .questions-grid {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
+      .focus-block {
+        gap: 10px;
       }
 
-      .focus-card,
-      .question-card {
+      .focus-block h3 {
+        margin-bottom: 0;
+      }
+
+      .focus-block p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.98rem;
+        line-height: 1.6;
+      }
+
+      .focus-visual {
+        margin: 0;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        background: rgba(255, 255, 255, 0.96);
+        box-shadow: 0 12px 26px rgba(24, 23, 19, 0.04);
+      }
+
+      .focus-visual img {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+
+      .focus-card {
         min-height: 100%;
         padding: 24px;
+      }
+
+      .questions-panel {
+        padding: 28px 30px;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.94);
+        box-shadow: 0 12px 26px rgba(24, 23, 19, 0.04);
+      }
+
+      .questions-list {
+        display: grid;
+        gap: 12px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .questions-list li {
+        display: grid;
+        grid-template-columns: 14px 1fr;
+        gap: 10px;
+        color: #2f3d46;
+        line-height: 1.6;
+      }
+
+      .questions-list li::before {
+        content: "";
+        width: 6px;
+        height: 6px;
+        margin-top: 10px;
+        border-radius: 50%;
+        background: rgba(83, 117, 104, 0.56);
       }
 
       .research-outcome {
@@ -1225,9 +1663,38 @@
       }
 
       .implication {
+        position: relative;
         margin-top: 14px;
-        padding-top: 14px;
-        border-top: 1px solid rgba(222, 217, 204, 0.88);
+        padding: 14px 16px;
+        border: 2px dashed #2d8cff;
+        border-radius: 0;
+        background: rgba(45, 140, 255, 0.04);
+      }
+
+      .implication::after {
+        content: "";
+        position: absolute;
+        right: 18px;
+        bottom: -14px;
+        width: 22px;
+        height: 24px;
+        background: #181713;
+        clip-path: polygon(
+          8% 8%,
+          20% 8%,
+          20% 20%,
+          36% 20%,
+          72% 36%,
+          56% 52%,
+          44% 68%,
+          30% 82%,
+          18% 92%,
+          10% 84%,
+          10% 70%,
+          0% 62%,
+          0% 46%
+        );
+        filter: drop-shadow(0 8px 14px rgba(24, 23, 19, 0.16));
       }
 
       .implication strong {
@@ -1237,7 +1704,7 @@
         margin-bottom: 8px;
         padding: 0 10px;
         border-radius: 999px;
-        background: rgba(83, 117, 104, 0.08);
+        background: rgba(83, 117, 104, 0.14);
         color: var(--sage);
         font-size: 0.76rem;
         font-weight: 760;
@@ -1270,6 +1737,36 @@
         background: #fff;
       }
 
+      .metric-pill:nth-child(1) {
+        background: rgba(83, 117, 104, 0.08);
+        border-color: rgba(83, 117, 104, 0.18);
+      }
+
+      .metric-pill:nth-child(2) {
+        background: rgba(124, 167, 184, 0.1);
+        border-color: rgba(124, 167, 184, 0.18);
+      }
+
+      .metric-pill:nth-child(3) {
+        background: rgba(215, 169, 72, 0.12);
+        border-color: rgba(215, 169, 72, 0.2);
+      }
+
+      .metric-pill:nth-child(4) {
+        background: rgba(63, 116, 108, 0.08);
+        border-color: rgba(63, 116, 108, 0.18);
+      }
+
+      .metric-pill:nth-child(5) {
+        background: rgba(179, 92, 62, 0.08);
+        border-color: rgba(179, 92, 62, 0.16);
+      }
+
+      .metric-pill:nth-child(6) {
+        background: rgba(83, 117, 104, 0.12);
+        border-color: rgba(83, 117, 104, 0.22);
+      }
+
       .metric-pill strong {
         display: block;
         margin-bottom: 6px;
@@ -1286,42 +1783,58 @@
         line-height: 1.45;
       }
 
-      .takeaways-grid {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 14px;
-      }
-
-      .takeaway-index {
-        display: block;
-        margin-bottom: 12px;
-        color: var(--sage);
-        font-size: 0.76rem;
-        font-weight: 760;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-      }
-
-      .takeaway-card {
+      .takeaways-panel {
         position: relative;
-        padding-left: 22px;
+        padding: 28px 30px;
+        border: 2px dashed rgba(63, 116, 108, 0.42);
+        border-radius: 18px;
+        background: rgba(63, 116, 108, 0.04);
+        box-shadow: 0 12px 26px rgba(24, 23, 19, 0.04);
       }
 
-      .takeaway-card::before {
-        content: "";
+      .takeaways-panel::before {
+        content: "🔑";
         position: absolute;
-        left: 0;
-        top: 18px;
-        bottom: 18px;
-        width: 3px;
-        border-radius: 999px;
-        background: rgba(83, 117, 104, 0.24);
+        top: -30px;
+        left: -20px;
+        font-size: 2.35rem;
+        line-height: 1;
+        filter: drop-shadow(0 8px 16px rgba(24, 23, 19, 0.12));
+        animation: keyBob 2.6s ease-in-out infinite;
+        animation-delay: 0.18s;
       }
 
-      .takeaway-card p {
+      .takeaways-panel h3 {
+        margin-bottom: 16px;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: clamp(1.5rem, 2vw, 2rem);
+        line-height: 1.05;
+      }
+
+      .takeaways-list {
+        display: grid;
+        gap: 12px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .takeaways-list li {
+        display: grid;
+        grid-template-columns: 18px 1fr;
+        gap: 12px;
         color: var(--ink);
         font-size: 1rem;
-        line-height: 1.55;
+        line-height: 1.6;
+      }
+
+      .takeaways-list li::before {
+        content: "";
+        width: 8px;
+        height: 8px;
+        margin-top: 8px;
+        border-radius: 50%;
+        background: var(--sage);
       }
 
       .insight-synthesis {
@@ -1399,7 +1912,7 @@
 
       .ai-value-flow {
         display: grid;
-        grid-template-columns: repeat(7, minmax(0, 1fr));
+        grid-template-columns: repeat(4, minmax(0, 1fr));
         gap: 12px;
         align-items: stretch;
       }
@@ -1487,12 +2000,31 @@
       }
 
       .direction-panel {
+        position: relative;
         padding: 30px 32px;
-        border: 1px solid var(--line);
-        border-left: 4px solid var(--terra);
-        border-radius: 18px;
-        background: rgba(255, 255, 255, 0.95);
+        border: 2px dashed #2d8cff;
+        border-radius: 0;
+        background: rgba(45, 140, 255, 0.04);
         box-shadow: 0 12px 26px rgba(24, 23, 19, 0.04);
+      }
+
+      .brief-cursor {
+        position: absolute;
+        right: 26px;
+        bottom: -22px;
+        display: grid;
+        place-items: center;
+        width: 34px;
+        height: 38px;
+        color: #181713;
+        filter: drop-shadow(0 8px 16px rgba(24, 23, 19, 0.16));
+      }
+
+      .brief-cursor svg {
+        display: block;
+        width: 100%;
+        height: 100%;
+        fill: currentColor;
       }
 
       .direction-panel h3 {
@@ -1500,6 +2032,7 @@
         font-family: Georgia, "Times New Roman", serif;
         font-size: clamp(1.5rem, 2vw, 2rem);
         line-height: 1.05;
+        color: #2d8cff;
       }
 
       .direction-panel p {
@@ -1508,6 +2041,9 @@
         color: #2f3d46;
         font-size: clamp(1.08rem, 1.8vw, 1.22rem);
         line-height: 1.7;
+        word-break: normal;
+        overflow-wrap: normal;
+        hyphens: none;
       }
 
       .solution-intro {
@@ -1908,7 +2444,7 @@
       }
 
       section {
-        padding: 76px 0;
+        padding: 68px 0;
       }
 
       .section-head {
@@ -2064,7 +2600,6 @@
         }
 
         .case-hero,
-        .contribution-block,
         .challenge-intro,
         .section-head,
         .evidence,
@@ -2139,6 +2674,27 @@
           grid-template-columns: repeat(2, minmax(0, 1fr));
         }
 
+        .snapshot-item {
+          border-right: 1px solid rgba(222, 217, 204, 0.88);
+          border-bottom: 1px solid rgba(222, 217, 204, 0.88);
+        }
+
+        .snapshot-item:nth-child(3n) {
+          border-right: 1px solid rgba(222, 217, 204, 0.88);
+        }
+
+        .snapshot-item:nth-child(2n) {
+          border-right: 0;
+        }
+
+        .snapshot-item:nth-last-child(-n + 3) {
+          border-bottom: 1px solid rgba(222, 217, 204, 0.88);
+        }
+
+        .snapshot-item:nth-last-child(-n + 2) {
+          border-bottom: 0;
+        }
+
         .journey-flow {
           grid-template-columns: repeat(6, minmax(0, 1fr));
         }
@@ -2159,6 +2715,15 @@
         .placeholder-grid {
           grid-template-columns: 1fr;
         }
+
+        .diagram-lightbox {
+          padding: 18px;
+        }
+
+        .diagram-lightbox-frame {
+          max-height: calc(100vh - 96px);
+          border-radius: 18px;
+        }
       }
 
       @media (max-width: 620px) {
@@ -2178,6 +2743,10 @@
 
         .nav-links a {
           padding-left: 0;
+        }
+
+        .contribution-block {
+          grid-template-columns: 1fr;
         }
 
         .case-minimap {
@@ -2251,6 +2820,15 @@
           grid-template-columns: 1fr;
         }
 
+        .snapshot-item {
+          border-right: 0;
+          border-bottom: 1px solid rgba(222, 217, 204, 0.88);
+        }
+
+        .snapshot-item:last-child {
+          border-bottom: 0;
+        }
+
         .insight-observation-card,
         .takeaway-card,
         .metric-pill {
@@ -2322,10 +2900,10 @@
         <div class="hero-copy">
           <p class="eyebrow">Graduation Project · Samsung R&amp;D Institute – Delhi</p>
           <h1 id="case-study-title" class="hero-title">
-            Designing an AI-Assisted Customer Support Platform
+            CX+
           </h1>
           <p class="hero-subtitle">
-            Reimagining enterprise customer support by helping agents navigate
+            Reimagining customer support by helping agents navigate
             fragmented systems with contextual AI assistance.
           </p>
           <div class="hero-overview">
@@ -2404,39 +2982,49 @@
           <h2 class="intro-section-title" id="snapshot-heading">Project Snapshot</h2>
           <dl class="snapshot-grid">
             <div class="snapshot-item">
-              <dt>Role</dt>
+              <dt>🧩 Role</dt>
               <dd>UX / Product Designer</dd>
             </div>
             <div class="snapshot-item">
-              <dt>Duration</dt>
+              <dt>⏳ Duration</dt>
               <dd>4 Months</dd>
             </div>
             <div class="snapshot-item">
-              <dt>Organization</dt>
+              <dt>🏢 Organization</dt>
               <dd>Samsung R&amp;D Institute &#8211; Delhi</dd>
             </div>
             <div class="snapshot-item">
-              <dt>Domain</dt>
-              <dd>Enterprise UX • Customer Experience • Generative AI</dd>
-            </div>
-            <div class="snapshot-item">
-              <dt>Methods</dt>
+              <dt>🎯 Domain</dt>
               <dd>
-                <span>Ethnographic Research</span>
-                <span>Contextual Inquiry</span>
-                <span>Journey Mapping</span>
-                <span>Service Design</span>
-                <span>Interaction Design</span>
+                <ul class="snapshot-list">
+                  <li>Customer Experience</li>
+                  <li>Generative AI</li>
+                </ul>
               </dd>
             </div>
             <div class="snapshot-item">
-              <dt>Deliverables</dt>
+              <dt>🔎 Methods</dt>
               <dd>
-                <span>UX Strategy</span>
-                <span>AI Experience Design</span>
-                <span>Information Architecture</span>
-                <span>Wireframes</span>
-                <span>High-Fidelity Prototype</span>
+                <ul class="snapshot-list">
+                  <li>Ethnographic Research</li>
+                  <li>Contextual Inquiry</li>
+                  <li>Journey Mapping</li>
+                  <li>Initial Exploration</li>
+                  <li>Stakeholder Review</li>
+                  <li>Final CX Tool Design</li>
+                </ul>
+              </dd>
+            </div>
+            <div class="snapshot-item">
+              <dt>📦 Deliverables</dt>
+              <dd>
+                <ul class="snapshot-list">
+                  <li>UX Strategy</li>
+                  <li>AI Experience Design</li>
+                  <li>Information Architecture</li>
+                  <li>Wireframes</li>
+                  <li>High-Fidelity Prototype</li>
+                </ul>
               </dd>
             </div>
           </dl>
@@ -2449,13 +3037,21 @@
             <li>Performed contextual inquiry inside a live customer support centre.</li>
             <li>Audited Samsung's internal customer support ecosystem.</li>
             <li>Synthesized research into product opportunities.</li>
-            <li>Designed an AI-assisted enterprise support experience from concept to high-fidelity prototype.</li>
+            <li>Designed an AI-assisted support experience from concept to high-fidelity prototype.</li>
           </ul>
         </div>
 
         <aside class="outcome-callout" aria-label="Outcome statement">
+          <span class="brief-spark primary" aria-hidden="true"></span>
+          <span class="brief-spark secondary" aria-hidden="true"></span>
+          <span class="brief-cursor" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M5 3.8c0-.7.8-1.1 1.4-.7l10.1 6.1c.7.4.5 1.5-.3 1.7l-4.3.8 3 5.5c.3.5.1 1.1-.4 1.4l-1.4.8c-.5.3-1.1.1-1.4-.4l-3-5.5-2.8 3c-.6.6-1.6.2-1.6-.6z" />
+            </svg>
+          </span>
+          <span class="outcome-kicker">Initial Brief</span>
           <p>
-            An AI-assisted enterprise support platform that helps agents spend less
+            An AI-assisted and consolidated support platform that helps agents spend less
             time searching for information and more time solving customer problems.
           </p>
         </aside>
@@ -2465,9 +3061,13 @@
         <div class="section-head challenge-head">
           <div>
             <p class="eyebrow">The Challenge</p>
-            <h2>Supporting Customers Shouldn't Mean Managing Systems</h2>
+            <div class="challenge-status" aria-label="Challenge framing">
+              <span class="status-ok">Support customers</span>
+              <span class="status-no">Manage systems</span>
+            </div>
           </div>
           <div class="challenge-copy">
+            <p class="challenge-kicker">Supporting Customers Shouldn't Mean Managing Systems</p>
             <p>Modern customer support extends far beyond answering phone calls.</p>
             <p>
               Agents are expected to understand customer history, identify products,
@@ -2493,132 +3093,31 @@
           <aside class="challenge-callout" aria-label="Design challenge statement">
             <h3>Design Challenge</h3>
             <p>
-              How might we leverage Generative AI to simplify enterprise customer
+              How might we leverage Generative AI to simplify customer
               support workflows, reduce repetitive effort, and help agents resolve
               customer issues more efficiently while preserving a human-centered
               support experience?
             </p>
           </aside>
-
-          <div
-            class="systems-support-diagram"
-            aria-label="Conceptual systems diagram showing a customer, a support agent, and many disconnected systems required to resolve a single issue."
-          >
-            <div class="systems-node customer">Customer</div>
-            <div class="systems-arrow" aria-hidden="true"></div>
-            <div class="systems-node agent">Support Agent</div>
-            <div class="systems-arrow" aria-hidden="true"></div>
-            <div class="systems-cluster">
-              <article class="system-card">
-                <span class="system-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24">
-                    <rect x="4" y="5" width="16" height="14" rx="2" />
-                    <path d="M8 9h8" />
-                    <path d="M8 13h5" />
-                  </svg>
-                </span>
-                <span>CRM</span>
-              </article>
-              <article class="system-card">
-                <span class="system-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24">
-                    <path d="M7 4h10v16H7z" />
-                    <path d="M10 8h4" />
-                    <path d="M10 12h4" />
-                  </svg>
-                </span>
-                <span>Knowledge Base</span>
-              </article>
-              <article class="system-card">
-                <span class="system-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24">
-                    <path d="M5 8h14" />
-                    <path d="M7 8V5h10v3" />
-                    <path d="M6 8v11h12V8" />
-                  </svg>
-                </span>
-                <span>Product Database</span>
-              </article>
-              <article class="system-card">
-                <span class="system-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24">
-                    <path d="M6 19h12" />
-                    <path d="M8 19V9l4-4 4 4v10" />
-                  </svg>
-                </span>
-                <span>Service Centre</span>
-              </article>
-              <article class="system-card">
-                <span class="system-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24">
-                    <path d="M4 7h16v10H4z" />
-                    <path d="m5 8 7 6 7-6" />
-                  </svg>
-                </span>
-                <span>Email</span>
-              </article>
-              <article class="system-card">
-                <span class="system-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24">
-                    <path d="M7 18v-7a5 5 0 0 1 10 0v7" />
-                    <path d="M7 14H5v4h2" />
-                    <path d="M17 14h2v4h-2" />
-                  </svg>
-                </span>
-                <span>Calls</span>
-              </article>
-              <article class="system-card">
-                <span class="system-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24">
-                    <path d="M4 19h16" />
-                    <path d="M7 16V8" />
-                    <path d="M12 16V5" />
-                    <path d="M17 16v-4" />
-                  </svg>
-                </span>
-                <span>Dashboard</span>
-              </article>
-              <article class="system-card">
-                <span class="system-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24">
-                    <path d="M7 4h10v16H7z" />
-                    <path d="M10 8h4" />
-                    <path d="M10 12h4" />
-                    <path d="M10 16h4" />
-                  </svg>
-                </span>
-                <span>Notes</span>
-              </article>
-              <article class="system-card">
-                <span class="system-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24">
-                    <path d="M6 12h12" />
-                    <path d="m12 6 6 6-6 6" />
-                  </svg>
-                </span>
-                <span>Service Tracking</span>
-              </article>
-            </div>
-          </div>
         </div>
 
         <div class="goals-grid" aria-label="Project goals">
-          <article class="card goal-card">
-            <h3>Reduce Cognitive Load</h3>
+          <article class="card goal-card goal-cognitive">
+            <h3>🧠 Reduce Cognitive Load</h3>
             <p>
               Decrease the effort required to gather information during live customer
               interactions.
             </p>
           </article>
-          <article class="card goal-card">
-            <h3>Unify Information</h3>
+          <article class="card goal-card goal-unify">
+            <h3>🧩 Unify Information</h3>
             <p>
               Bring together fragmented customer context, product information and
               support history into a cohesive experience.
             </p>
           </article>
-          <article class="card goal-card">
-            <h3>Augment Human Decision-Making</h3>
+          <article class="card goal-card goal-assist">
+            <h3>🤝 Assist Human thinking</h3>
             <p>
               Use AI to assist agents with recommendations, summaries and knowledge
               retrieval while keeping humans in control.
@@ -2627,12 +3126,12 @@
         </div>
 
         <div class="section-divider" aria-hidden="true"></div>
-        <div class="section-next">Understanding the Problem.</div>
+        <div class="section-next">Next... Understanding the Problem.</div>
       </section>
 
       <section id="ecosystem" class="wrap ecosystem-block">
         <div class="section-head">
-          <h2>Understanding the Support Ecosystem</h2>
+          <h2>Customer Experience Tool ecosystem</h2>
           <p class="lede">
             Before conducting field research, I mapped the customer support ecosystem
             to understand how customers, agents, internal tools, and service teams
@@ -2640,235 +3139,63 @@
           </p>
         </div>
 
-        <div class="grid-2">
-          <div class="challenge-copy">
-            <h3>The Support Ecosystem</h3>
-            <p>
-              Resolving a customer issue extends beyond a single support application.
-              Agents interact with multiple systems to access customer history, product
-              information, troubleshooting guides, service requests, and communication
-              records. Each platform contributes part of the information required to
-              deliver an effective resolution.
-            </p>
-          </div>
-          <div class="ecosystem-diagram" aria-label="Support ecosystem overview">
-            <div class="ecosystem-flow">
-              <div class="eco-node">
-                <span class="eco-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24">
-                    <circle cx="12" cy="8" r="4" />
-                    <path d="M5 20c1.8-3 4.2-4.5 7-4.5S17.2 17 19 20" />
-                  </svg>
-                </span>
-                <span>Customer</span>
-              </div>
-              <div class="flow-arrow" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <path d="M5 12h14" />
-                  <path d="m13 7 6 5-6 5" />
-                </svg>
-              </div>
-              <div class="eco-node">
-                <span class="eco-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24">
-                    <path d="M4 7h16" />
-                    <path d="M4 12h10" />
-                    <path d="M4 17h13" />
-                  </svg>
-                </span>
-                <span>Support Channels</span>
-              </div>
-              <div class="flow-arrow" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <path d="M5 12h14" />
-                  <path d="m13 7 6 5-6 5" />
-                </svg>
-              </div>
-              <div class="eco-node">
-                <span class="eco-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24">
-                    <path d="M4 6h16v12H4z" />
-                    <path d="M9 10h6" />
-                    <path d="M9 14h4" />
-                  </svg>
-                </span>
-                <span>Customer Support Agent</span>
-              </div>
-              <div class="flow-arrow" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <path d="M5 12h14" />
-                  <path d="m13 7 6 5-6 5" />
-                </svg>
-              </div>
-            </div>
-            <div class="ecosystem-flow">
-              <div class="eco-node">
-                <span class="eco-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24">
-                    <rect x="4" y="5" width="16" height="14" rx="2" />
-                    <path d="M8 10h8" />
-                    <path d="M8 14h5" />
-                  </svg>
-                </span>
-                <span>Internal Support Systems</span>
-              </div>
-              <div class="flow-arrow" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <path d="M5 12h14" />
-                  <path d="m13 7 6 5-6 5" />
-                </svg>
-              </div>
-              <div class="eco-node">
-                <span class="eco-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24">
-                    <path d="M6 19V8l6-3 6 3v11" />
-                    <path d="M9 19v-5h6v5" />
-                  </svg>
-                </span>
-                <span>Service Centre</span>
-              </div>
-              <div class="flow-arrow" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <path d="M5 12h14" />
-                  <path d="m13 7 6 5-6 5" />
-                </svg>
-              </div>
-              <div class="eco-node">
-                <span class="eco-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24">
-                    <path d="m5 13 4 4L19 7" />
-                  </svg>
-                </span>
-                <span>Resolution</span>
-              </div>
-            </div>
-          </div>
-        </div>
+        <figure class="ecosystem-image-card" aria-label="Support ecosystem overview image">
+          <img
+            src="assets/ecosystem.png"
+            alt="Support ecosystem overview."
+            loading="lazy"
+          />
+        </figure>
 
         <div class="systems-block">
           <div class="section-head">
-            <h2>Information is Distributed Across Multiple Systems</h2>
+            <h2>Scattered workflow</h2>
             <p class="lede">
               Different systems contributed different layers of context, creating a
               fragmented picture of the customer and their issue.
             </p>
           </div>
-          <div class="systems-grid">
-            <article class="card system-card">
-              <h3>Customer Records</h3>
-              <ul class="system-list">
-                <li>Customer profile</li>
-                <li>Previous interactions</li>
-                <li>Product ownership</li>
-              </ul>
-            </article>
-            <article class="card system-card">
-              <h3>Knowledge Base</h3>
-              <ul class="system-list">
-                <li>Troubleshooting guides</li>
-                <li>Policies</li>
-                <li>Internal documentation</li>
-              </ul>
-            </article>
-            <article class="card system-card">
-              <h3>Product Database</h3>
-              <ul class="system-list">
-                <li>Product specifications</li>
-                <li>Model information</li>
-                <li>Warranty details</li>
-              </ul>
-            </article>
-            <article class="card system-card">
-              <h3>Service Management</h3>
-              <ul class="system-list">
-                <li>Repair status</li>
-                <li>Service requests</li>
-                <li>Technician updates</li>
-              </ul>
-            </article>
-            <article class="card system-card">
-              <h3>Communication Channels</h3>
-              <ul class="system-list">
-                <li>Calls</li>
-                <li>Email</li>
-                <li>Chat</li>
-                <li>Messaging platforms</li>
-              </ul>
-            </article>
-          </div>
-          <p class="system-observation">
-            Each application serves a specific purpose, requiring agents to move
-            between systems to gather enough context for a single customer
-            interaction.
-          </p>
-        </div>
-
-        <div class="journey-block">
-          <div class="section-head">
-            <h2>High-Level Support Journey</h2>
-            <p class="lede">
-              The main friction appears in the middle of the support flow, where agents
-              must gather and validate fragmented information before resolution.
-            </p>
-          </div>
-          <div class="journey-diagram">
-            <div class="journey-flow" aria-label="High-level support journey">
-              <div class="journey-step"><span>Customer raises issue</span></div>
-              <div class="journey-arrow" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <path d="M5 12h14" />
-                  <path d="m13 7 6 5-6 5" />
+          <figure class="systems-figure">
+            <div class="systems-figure-shell">
+              <button
+                type="button"
+                class="viewer-button icon-button"
+                data-open-diagram
+                aria-label="View workflow diagram full screen"
+                title="View full screen"
+                aria-haspopup="dialog"
+                aria-controls="systems-diagram-lightbox"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M8 4H4v4" />
+                  <path d="M16 4h4v4" />
+                  <path d="M20 16v4h-4" />
+                  <path d="M8 20H4v-4" />
+                  <path d="M4 8 9 3" />
+                  <path d="m15 3 5 5" />
+                  <path d="m20 16-5 5" />
+                  <path d="m4 16 5 5" />
                 </svg>
-              </div>
-              <div class="journey-step"><span>Support channel</span></div>
-              <div class="journey-arrow" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <path d="M5 12h14" />
-                  <path d="m13 7 6 5-6 5" />
-                </svg>
-              </div>
-              <div class="journey-step"><span>Agent receives request</span></div>
-              <div class="journey-arrow" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <path d="M5 12h14" />
-                  <path d="m13 7 6 5-6 5" />
-                </svg>
-              </div>
-              <div class="journey-step highlight"><span>Information gathering</span></div>
-              <div class="journey-arrow" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <path d="M5 12h14" />
-                  <path d="m13 7 6 5-6 5" />
-                </svg>
-              </div>
-              <div class="journey-step"><span>Resolution</span></div>
-              <div class="journey-arrow" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <path d="M5 12h14" />
-                  <path d="m13 7 6 5-6 5" />
-                </svg>
-              </div>
-              <div class="journey-step"><span>Follow-up</span></div>
+              </button>
+              <img
+                src="assets/Flow%20Diagram%20for%20Simultaneity.png"
+                alt="Workflow diagram showing the scattered support flow across multiple systems."
+                loading="lazy"
+              />
             </div>
-            <p class="journey-annotation">
-              Most effort is spent collecting and validating information rather than
-              solving the customer's problem.
-            </p>
-          </div>
+          </figure>
         </div>
 
         <aside class="insight-panel" aria-label="Key observation">
           <h3>Key Observation</h3>
           <p>
-            A single customer request often required navigating multiple disconnected
-            applications before enough context was available to provide an informed
-            response. This fragmented workflow became the primary focus of the
-            research phase.
+            Agents had to navigate multiple disconnected applications before they had
+            enough context to respond effectively.
           </p>
         </aside>
 
         <div class="section-divider" aria-hidden="true"></div>
-        <div class="section-next">Next → Understanding the people behind the workflow</div>
+        <div class="section-next">Next... Understanding the people behind the workflow</div>
       </section>
 
       <section id="research" class="wrap research-methodology">
@@ -2880,6 +3207,17 @@
             collaborated, and resolved customer issues.
           </p>
         </div>
+        <div class="approach-block">
+          <h3 class="approach-heading">Research Approach</h3>
+          <figure class="approach-visual">
+            <img
+              src="assets/Research%20Methodology%20Steps%20Jul%2012%202026.png"
+              alt="Research methodology steps overview."
+              loading="lazy"
+            />
+          </figure>
+        </div>
+
         <div class="research-intro">
           <p>
             To uncover the root causes behind inefficient support workflows, I combined
@@ -2888,112 +3226,6 @@
             visible workflow and the hidden operational challenges that agents
             experienced every day.
           </p>
-        </div>
-
-        <div class="approach-block">
-          <h3 class="approach-heading">Research Approach</h3>
-          <div class="approach-flow">
-            <article class="approach-card">
-              <span class="approach-step">1</span>
-              <span class="approach-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <path d="M12 19c4 0 7-3 7-7s-3-7-7-7-7 3-7 7 3 7 7 7Z" />
-                  <path d="M10 9h4" />
-                  <path d="M10 12h4" />
-                  <path d="M10 15h3" />
-                </svg>
-              </span>
-              <h3>Ethnographic Research</h3>
-              <p>
-                Spent time inside a Samsung customer support centre observing real
-                working environments.
-              </p>
-            </article>
-            <div class="approach-arrow" aria-hidden="true">
-              <svg viewBox="0 0 24 24">
-                <path d="M5 12h14" />
-                <path d="m13 7 6 5-6 5" />
-              </svg>
-            </div>
-            <article class="approach-card">
-              <span class="approach-step">2</span>
-              <span class="approach-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <circle cx="10" cy="10" r="5" />
-                  <path d="m14 14 6 6" />
-                </svg>
-              </span>
-              <h3>Contextual Inquiry</h3>
-              <p>
-                Interviewed agents while they handled live customer interactions to
-                understand decisions and behaviours.
-              </p>
-            </article>
-            <div class="approach-arrow" aria-hidden="true">
-              <svg viewBox="0 0 24 24">
-                <path d="M5 12h14" />
-                <path d="m13 7 6 5-6 5" />
-              </svg>
-            </div>
-            <article class="approach-card">
-              <span class="approach-step">3</span>
-              <span class="approach-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <path d="M4 17V7" />
-                  <path d="M10 17V11" />
-                  <path d="M16 17V9" />
-                  <path d="M22 17V5" />
-                </svg>
-              </span>
-              <h3>Workflow Observation</h3>
-              <p>
-                Studied navigation patterns, task switching, communication flow, and
-                information retrieval.
-              </p>
-            </article>
-            <div class="approach-arrow" aria-hidden="true">
-              <svg viewBox="0 0 24 24">
-                <path d="M5 12h14" />
-                <path d="m13 7 6 5-6 5" />
-              </svg>
-            </div>
-            <article class="approach-card">
-              <span class="approach-step">4</span>
-              <span class="approach-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <circle cx="8" cy="10" r="3" />
-                  <circle cx="16" cy="10" r="3" />
-                  <path d="M3 19c1.5-2.5 3.3-3.8 5-3.8S11.5 16.5 13 19" />
-                  <path d="M11 19c1.5-2.5 3.3-3.8 5-3.8s3.5 1.3 5 3.8" />
-                </svg>
-              </span>
-              <h3>Stakeholder Discussions</h3>
-              <p>
-                Validated operational challenges with managers and domain experts.
-              </p>
-            </article>
-            <div class="approach-arrow" aria-hidden="true">
-              <svg viewBox="0 0 24 24">
-                <path d="M5 12h14" />
-                <path d="m13 7 6 5-6 5" />
-              </svg>
-            </div>
-            <article class="approach-card">
-              <span class="approach-step">5</span>
-              <span class="approach-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <path d="M4 6h16v12H4z" />
-                  <path d="M8 10h8" />
-                  <path d="M8 14h5" />
-                </svg>
-              </span>
-              <h3>Application Audit</h3>
-              <p>
-                Analyzed internal support tools, knowledge bases, and customer
-                management systems.
-              </p>
-            </article>
-          </div>
         </div>
 
         <div class="field-study-block">
@@ -3033,115 +3265,26 @@
 
         <div class="focus-block">
           <h3>Research Focus</h3>
-          <div class="focus-grid">
-            <article class="focus-card">
-              <span class="focus-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <circle cx="12" cy="8" r="4" />
-                  <path d="M5 20c1.8-3 4.2-4.5 7-4.5S17.2 17 19 20" />
-                </svg>
-              </span>
-              <h3>Agent Behaviour</h3>
-              <p>How agents navigate systems and make decisions.</p>
-            </article>
-            <article class="focus-card">
-              <span class="focus-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <circle cx="12" cy="12" r="8" />
-                  <path d="M12 8v5l3 2" />
-                </svg>
-              </span>
-              <h3>Workflow Efficiency</h3>
-              <p>Where time and effort are spent during support calls.</p>
-            </article>
-            <article class="focus-card">
-              <span class="focus-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <rect x="4" y="5" width="6" height="6" rx="1" />
-                  <rect x="14" y="5" width="6" height="6" rx="1" />
-                  <rect x="9" y="13" width="6" height="6" rx="1" />
-                  <path d="M10 8h4" />
-                  <path d="M12 11v2" />
-                </svg>
-              </span>
-              <h3>Information Flow</h3>
-              <p>How customer information moves across multiple applications.</p>
-            </article>
-            <article class="focus-card">
-              <span class="focus-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <path d="M12 4v4" />
-                  <path d="M12 16v4" />
-                  <path d="M4 12h4" />
-                  <path d="M16 12h4" />
-                  <path d="m6.5 6.5 2.8 2.8" />
-                  <path d="m14.7 14.7 2.8 2.8" />
-                  <path d="m17.5 6.5-2.8 2.8" />
-                  <path d="m9.3 14.7-2.8 2.8" />
-                </svg>
-              </span>
-              <h3>AI Opportunities</h3>
-              <p>
-                Where Generative AI could reduce repetitive effort without disrupting
-                existing workflows.
-              </p>
-            </article>
-          </div>
+          <p>What we will emphasize during research.</p>
+          <figure class="focus-visual">
+            <img
+              src="assets/ChatGPT%20Infographic%20Jul%2012%202026%20%281%29%20copy.png"
+              alt="Research focus infographic"
+              loading="lazy"
+            />
+          </figure>
         </div>
 
         <div class="questions-block">
           <h3>Questions That Guided The Research</h3>
-          <div class="questions-grid">
-            <article class="question-card">
-              <span class="question-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <path d="M4 7h16" />
-                  <path d="M8 7v10" />
-                  <path d="M16 7v10" />
-                  <path d="M8 12h8" />
-                </svg>
-              </span>
-              <h3>Understanding Current Workflows</h3>
-              <p>How does an agent resolve a customer issue from start to finish?</p>
-            </article>
-            <article class="question-card">
-              <span class="question-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <path d="m12 3 9 16H3L12 3Z" />
-                  <path d="M12 9v4" />
-                  <path d="M12 17h.01" />
-                </svg>
-              </span>
-              <h3>Pain Points</h3>
-              <p>Which tasks consume the most time or create unnecessary effort?</p>
-            </article>
-            <article class="question-card">
-              <span class="question-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <path d="M7 4h7l5 5v11H7z" />
-                  <path d="M14 4v5h5" />
-                  <path d="M10 13h4" />
-                  <path d="M10 17h4" />
-                </svg>
-              </span>
-              <h3>Information Needs</h3>
-              <p>What information is difficult to find during a live interaction?</p>
-            </article>
-            <article class="question-card">
-              <span class="question-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <circle cx="12" cy="12" r="8" />
-                  <path d="M12 12 16 8" />
-                  <path d="M12 12 9 15" />
-                </svg>
-              </span>
-              <h3>Future Opportunities</h3>
-              <p>
-                Where could AI provide meaningful assistance without replacing human
-                judgement?
-              </p>
-            </article>
-          </div>
+          <aside class="questions-panel" aria-label="Questions that guided the research">
+            <ul class="questions-list">
+              <li>How does an agent resolve a customer issue from start to finish?</li>
+              <li>Which tasks consume the most time or create unnecessary effort?</li>
+              <li>What information is difficult to find during a live interaction?</li>
+              <li>Where could AI provide meaningful assistance without replacing human judgement?</li>
+            </ul>
+          </aside>
         </div>
 
         <aside class="research-outcome" aria-label="Research outcome">
@@ -3154,7 +3297,7 @@
         </aside>
 
         <div class="section-divider" aria-hidden="true"></div>
-        <div class="section-next">Next → Insights from the Field</div>
+        <div class="section-next">Next... Insights from the Field</div>
       </section>
 
       <section id="insights" class="wrap">
@@ -3310,44 +3453,20 @@
           </div>
 
           <div class="approach-block">
-            <h3>Key Takeaways</h3>
-            <div class="takeaways-grid">
-              <article class="card takeaway-card">
-                <span class="takeaway-index">Insight 01</span>
-                <p>Agents spend more time finding information than solving customer problems.</p>
-              </article>
-              <article class="card takeaway-card">
-                <span class="takeaway-index">Insight 02</span>
-                <p>The biggest opportunity is reducing cognitive load rather than automating entire conversations.</p>
-              </article>
-              <article class="card takeaway-card">
-                <span class="takeaway-index">Insight 03</span>
-                <p>AI should proactively surface information instead of waiting for user prompts.</p>
-              </article>
-              <article class="card takeaway-card">
-                <span class="takeaway-index">Insight 04</span>
-                <p>Support workflows should remain familiar while reducing unnecessary complexity.</p>
-              </article>
-              <article class="card takeaway-card">
-                <span class="takeaway-index">Insight 05</span>
-                <p>Customers experience one support journey, even though agents work across many disconnected systems.</p>
-              </article>
-            </div>
+            <aside class="takeaways-panel" aria-label="Key takeaways">
+              <h3>Key Takeaways</h3>
+              <ul class="takeaways-list">
+                <li>Agents spent more time gathering information than solving customer issues.</li>
+                <li>The strongest AI opportunity was reducing cognitive load rather than automating entire conversations.</li>
+                <li>AI should proactively surface information instead of waiting for user prompts.</li>
+                <li>Support workflows should remain familiar while reducing unnecessary complexity.</li>
+                <li>Customers experience one support journey even when agents work across many disconnected systems.</li>
+              </ul>
+            </aside>
           </div>
 
-          <aside class="insight-synthesis" aria-label="Research synthesis">
-            <h3>Research Synthesis</h3>
-            <p>
-              The recurring challenge across every observation was not a lack of
-              information—it was the effort required to access, connect and act upon
-              it. This shifted the design direction away from building another support
-              application and toward creating an AI-powered layer that augments
-              existing workflows with timely, contextual assistance.
-            </p>
-          </aside>
-
           <div class="section-divider" aria-hidden="true"></div>
-          <div class="section-next">Next → Defining the Opportunity</div>
+          <div class="section-next">Next... Defining the Opportunity</div>
         </div>
       </section>
 
@@ -3424,12 +3543,6 @@
                 <li>Conversation understanding</li>
               </ul>
             </article>
-            <div class="value-arrow" aria-hidden="true">
-              <svg viewBox="0 0 24 24">
-                <path d="M5 12h14" />
-                <path d="m13 7 6 5-6 5" />
-              </svg>
-            </div>
             <article class="card value-card">
               <div class="value-header">
                 <span class="value-icon" aria-hidden="true">
@@ -3446,12 +3559,6 @@
                 <li>Relevant documentation</li>
               </ul>
             </article>
-            <div class="value-arrow" aria-hidden="true">
-              <svg viewBox="0 0 24 24">
-                <path d="M5 12h14" />
-                <path d="m13 7 6 5-6 5" />
-              </svg>
-            </div>
             <article class="card value-card">
               <div class="value-header">
                 <span class="value-icon" aria-hidden="true">
@@ -3468,12 +3575,6 @@
                 <li>Next best actions</li>
               </ul>
             </article>
-            <div class="value-arrow" aria-hidden="true">
-              <svg viewBox="0 0 24 24">
-                <path d="M5 12h14" />
-                <path d="m13 7 6 5-6 5" />
-              </svg>
-            </div>
             <article class="card value-card">
               <div class="value-header">
                 <span class="value-icon" aria-hidden="true">
@@ -3496,49 +3597,25 @@
           </div>
         </div>
 
-        <div class="approach-block">
-          <h3>Design Principles</h3>
-          <div class="principles-grid">
-            <article class="card principle-card">
-              <span class="principle-index">Principle 1</span>
-              <h3>Reduce Cognitive Load</h3>
-              <p>Only surface the most relevant information when it is needed.</p>
-            </article>
-            <article class="card principle-card">
-              <span class="principle-index">Principle 2</span>
-              <h3>Keep Humans in Control</h3>
-              <p>AI assists decisions rather than replacing them.</p>
-            </article>
-            <article class="card principle-card">
-              <span class="principle-index">Principle 3</span>
-              <h3>Minimize Context Switching</h3>
-              <p>Bring information together instead of moving users between systems.</p>
-            </article>
-            <article class="card principle-card">
-              <span class="principle-index">Principle 4</span>
-              <h3>Support Existing Mental Models</h3>
-              <p>Improve familiar workflows instead of introducing entirely new ones.</p>
-            </article>
-            <article class="card principle-card">
-              <span class="principle-index">Principle 5</span>
-              <h3>AI Should Be Contextual</h3>
-              <p>Recommendations should always relate to the current customer conversation.</p>
-            </article>
-          </div>
-        </div>
-
-        <aside class="direction-panel" aria-label="Product direction">
-          <h3>Product Direction</h3>
+        <aside class="direction-panel" aria-label="Redefined brief">
+          <span class="brief-spark primary" aria-hidden="true"></span>
+          <span class="brief-spark secondary" aria-hidden="true"></span>
+          <span class="brief-cursor" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M5 3.8c0-.7.8-1.1 1.4-.7l10.1 6.1c.7.4.5 1.5-.3 1.7l-4.3.8 3 5.5c.3.5.1 1.1-.4 1.4l-1.4.8c-.5.3-1.1.1-1.4-.4l-3-5.5-2.8 3c-.6.6-1.6.2-1.6-.6z" />
+            </svg>
+          </span>
+          <h3>Redefined Brief</h3>
           <p>
             Rather than replacing existing customer support systems, the solution
-            focuses on creating an AI-assisted layer that connects fragmented
+            focuses on creating an AI assisted layer that connects fragmented
             information, reduces repetitive work, and enables agents to resolve
             customer issues with greater confidence and efficiency.
           </p>
         </aside>
 
         <div class="section-divider" aria-hidden="true"></div>
-        <div class="section-next">Next → Introducing the Solution</div>
+        <div class="section-next">Next... Introducing the Solution</div>
       </section>
 
       <section id="solution" class="wrap solution-intro">
@@ -3841,7 +3918,7 @@
         </aside>
 
         <div class="section-divider" aria-hidden="true"></div>
-        <div class="section-next">Next → Exploring the Product Experience</div>
+        <div class="section-next">Next... Exploring the Product Experience</div>
       </section>
 
       <section id="product-experience" class="wrap">
@@ -3912,14 +3989,14 @@
         </div>
         <div class="grid-3">
           <article class="card">
-            <h3>Auto-fill and auto-summary</h3>
+            <h3>Auto summarized</h3>
             <p>
               GenAI reduces typing by turning speech and available records into editable
               summaries, tags, issue prompts, and profile or ticket fields.
             </p>
           </article>
           <article class="card">
-            <h3>Consolidation</h3>
+            <h3>Omni channel</h3>
             <p>
               Profile, product, ticket, channel, history, and service data are brought
               into one place so agents do not need to switch windows for every call.
@@ -4014,8 +4091,64 @@
       </section>
     </main>
 
+    <div
+      id="systems-diagram-lightbox"
+      class="diagram-lightbox"
+      hidden
+      role="dialog"
+      aria-modal="true"
+      aria-label="Scattered workflow diagram full screen view"
+    >
+      <div class="diagram-lightbox-panel">
+        <div class="diagram-lightbox-actions">
+          <button type="button" class="viewer-button" data-close-diagram>Return to page</button>
+        </div>
+        <div class="diagram-lightbox-frame">
+          <img
+            src="assets/Flow%20Diagram%20for%20Simultaneity.png"
+            alt="Workflow diagram showing the scattered support flow across multiple systems."
+          />
+        </div>
+      </div>
+    </div>
+
     <footer class="wrap">
       <span>Project by Trishala Gosar. Sponsor: Samsung SRI-Delhi. Academic guide: Amrapali Hazra.</span>
     </footer>
+
+    <script>
+      const diagramLightbox = document.getElementById("systems-diagram-lightbox");
+      const openDiagramButton = document.querySelector("[data-open-diagram]");
+      const closeDiagramButton = document.querySelector("[data-close-diagram]");
+
+      if (diagramLightbox && openDiagramButton && closeDiagramButton) {
+        const openDiagram = () => {
+          diagramLightbox.hidden = false;
+          document.body.style.overflow = "hidden";
+          closeDiagramButton.focus();
+        };
+
+        const closeDiagram = () => {
+          diagramLightbox.hidden = true;
+          document.body.style.overflow = "";
+          openDiagramButton.focus();
+        };
+
+        openDiagramButton.addEventListener("click", openDiagram);
+        closeDiagramButton.addEventListener("click", closeDiagram);
+
+        diagramLightbox.addEventListener("click", (event) => {
+          if (event.target === diagramLightbox) {
+            closeDiagram();
+          }
+        });
+
+        document.addEventListener("keydown", (event) => {
+          if (event.key === "Escape" && !diagramLightbox.hidden) {
+            closeDiagram();
+          }
+        });
+      }
+    </script>
   </body>
 </html>
