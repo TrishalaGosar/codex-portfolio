@@ -300,7 +300,7 @@
       .doc-image {
         overflow: hidden;
         border: 1px solid var(--line);
-        border-radius: 18px;
+        border-radius: 0;
         background: var(--surface);
         box-shadow: var(--shadow);
       }
@@ -2433,6 +2433,10 @@
         gap: 16px;
       }
 
+      .persona-grid {
+        grid-template-columns: minmax(0, 1.15fr) minmax(0, 1.15fr) minmax(0, 1.15fr);
+      }
+
       .card {
         min-height: 205px;
         padding: 22px;
@@ -2532,6 +2536,20 @@
         margin: 10px 0 0;
         color: var(--muted);
         font-size: 0.88rem;
+      }
+
+      .persona-grid .doc-image {
+        padding: 0;
+        margin: 0;
+      }
+
+      .persona-grid .caption {
+        margin: 8px 12px 12px;
+      }
+
+      .persona-grid img {
+        width: 100%;
+        height: auto;
       }
 
       #overview,
@@ -2856,7 +2874,7 @@
         <div class="nav-links">
           <a href="index.html">Home</a>
           <a href="index.html#work">Work</a>
-          <a href="https://trishalagosar.github.io/Trishl.me-/games/">Play</a>
+          <a href="games/index.html">Play</a>
           <a href="index.html#contact">Contact</a>
         </div>
       </div>
@@ -3232,6 +3250,40 @@
             opportunities where AI could meaningfully assist support agents.
           </p>
         </aside>
+
+        <div class="approach-block">
+          <h3>User Persona</h3>
+          <p class="caption">
+            This user persona is an outcome of research and observing multiple calls
+            and agents, conversations with agents.
+          </p>
+          <div class="grid-3 persona-grid">
+            <figure class="doc-image">
+              <img
+                src="assets/User Persona ( Secondary User ) Newbie agent.png"
+                alt="Secondary user persona for a newbie agent."
+                loading="lazy"
+              />
+              <figcaption class="caption">Secondary user - Newbie agent.</figcaption>
+            </figure>
+            <figure class="doc-image">
+              <img
+                src="assets/User Persona ( Primary User ) Seasoned Call Centre agent.jpg"
+                alt="Primary user persona for a seasoned call centre agent."
+                loading="lazy"
+              />
+              <figcaption class="caption">Primary user - Seasoned call centre agent.</figcaption>
+            </figure>
+            <figure class="doc-image">
+              <img
+                src="assets/User Persona ( Primary User ) Newbie agent.png"
+                alt="Primary user persona for a newbie agent."
+                loading="lazy"
+              />
+              <figcaption class="caption">Primary user - Newbie agent.</figcaption>
+            </figure>
+          </div>
+        </div>
 
         <div class="section-divider" aria-hidden="true"></div>
         <div class="section-next">Next... Insights from the Field</div>
